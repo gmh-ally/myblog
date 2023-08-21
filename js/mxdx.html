@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>⾯向对象编程/原型链/继承 | 初见的博客</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/myblog/logo.png">
+    <meta name="description" content="一年之计在于春，一日之计在于晨">
+    
+    <link rel="preload" href="/myblog/assets/css/0.styles.3755d74c.css" as="style"><link rel="preload" href="/myblog/assets/js/app.9fc450cc.js" as="script"><link rel="preload" href="/myblog/assets/js/2.ab37133f.js" as="script"><link rel="preload" href="/myblog/assets/js/1.3f67ceee.js" as="script"><link rel="preload" href="/myblog/assets/js/33.4c594068.js" as="script"><link rel="prefetch" href="/myblog/assets/js/10.0ab8f3c6.js"><link rel="prefetch" href="/myblog/assets/js/11.9f55e46b.js"><link rel="prefetch" href="/myblog/assets/js/12.41e41b87.js"><link rel="prefetch" href="/myblog/assets/js/13.37d788cf.js"><link rel="prefetch" href="/myblog/assets/js/14.bc2bab3a.js"><link rel="prefetch" href="/myblog/assets/js/15.19b29af1.js"><link rel="prefetch" href="/myblog/assets/js/16.d61dd96b.js"><link rel="prefetch" href="/myblog/assets/js/17.cb5e3c25.js"><link rel="prefetch" href="/myblog/assets/js/18.521dbbdb.js"><link rel="prefetch" href="/myblog/assets/js/19.dcced78b.js"><link rel="prefetch" href="/myblog/assets/js/20.92d99f7e.js"><link rel="prefetch" href="/myblog/assets/js/21.cc998f0c.js"><link rel="prefetch" href="/myblog/assets/js/22.661f1850.js"><link rel="prefetch" href="/myblog/assets/js/23.129803c5.js"><link rel="prefetch" href="/myblog/assets/js/24.2240fa94.js"><link rel="prefetch" href="/myblog/assets/js/25.76239df9.js"><link rel="prefetch" href="/myblog/assets/js/26.a1af574a.js"><link rel="prefetch" href="/myblog/assets/js/27.334c7abf.js"><link rel="prefetch" href="/myblog/assets/js/28.d2fee478.js"><link rel="prefetch" href="/myblog/assets/js/29.d8f993e3.js"><link rel="prefetch" href="/myblog/assets/js/3.f31ba51a.js"><link rel="prefetch" href="/myblog/assets/js/30.36745d91.js"><link rel="prefetch" href="/myblog/assets/js/31.935bd9ec.js"><link rel="prefetch" href="/myblog/assets/js/32.aca923fd.js"><link rel="prefetch" href="/myblog/assets/js/34.46fd7cb3.js"><link rel="prefetch" href="/myblog/assets/js/35.a297016e.js"><link rel="prefetch" href="/myblog/assets/js/36.b4bdfa26.js"><link rel="prefetch" href="/myblog/assets/js/37.a50da173.js"><link rel="prefetch" href="/myblog/assets/js/4.257a497a.js"><link rel="prefetch" href="/myblog/assets/js/5.3c89e32a.js"><link rel="prefetch" href="/myblog/assets/js/6.1556cbc9.js"><link rel="prefetch" href="/myblog/assets/js/7.562f9f76.js"><link rel="prefetch" href="/myblog/assets/js/vendors~docsearch.271bc088.js">
+    <link rel="stylesheet" href="/myblog/assets/css/0.styles.3755d74c.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/myblog/" class="home-link router-link-active"><!----> <span class="site-name">初见的博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="ES6" class="dropdown-title"><span class="title">ES6</span> <span class="arrow down"></span></button> <button type="button" aria-label="ES6" class="mobile-dropdown-title"><span class="title">ES6</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/es6module/index.html" class="nav-link">
+  es6基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/ergodic.html" class="nav-link">
+  for of 迭代器
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/arrow.html" class="nav-link">
+  模板字符串
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/set.html" class="nav-link">
+  实现一个Set数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/WeakMap.html" class="nav-link">
+  WeakMap
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/promise.html" class="nav-link">
+  聊聊promise
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Js" class="dropdown-title"><span class="title">Js</span> <span class="arrow down"></span></button> <button type="button" aria-label="Js" class="mobile-dropdown-title"><span class="title">Js</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/js/index.html" class="nav-link">
+  call、apply、bind的区别
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/throttle.html" class="nav-link">
+  节流防抖
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/new.html" class="nav-link">
+  new操作符
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/event.html" class="nav-link">
+  事件循环
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/clap.html" class="nav-link">
+  数组拍平
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/this.html" class="nav-link">
+  this指向、闭包、作用域
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/sqkb.html" class="nav-link">
+  深浅拷贝
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/mxdx.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  ⾯向对象编程/原型链/继承
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="ES6" class="dropdown-title"><span class="title">ES6</span> <span class="arrow down"></span></button> <button type="button" aria-label="ES6" class="mobile-dropdown-title"><span class="title">ES6</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/es6module/index.html" class="nav-link">
+  es6基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/ergodic.html" class="nav-link">
+  for of 迭代器
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/arrow.html" class="nav-link">
+  模板字符串
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/set.html" class="nav-link">
+  实现一个Set数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/WeakMap.html" class="nav-link">
+  WeakMap
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/promise.html" class="nav-link">
+  聊聊promise
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Js" class="dropdown-title"><span class="title">Js</span> <span class="arrow down"></span></button> <button type="button" aria-label="Js" class="mobile-dropdown-title"><span class="title">Js</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/js/index.html" class="nav-link">
+  call、apply、bind的区别
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/throttle.html" class="nav-link">
+  节流防抖
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/new.html" class="nav-link">
+  new操作符
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/event.html" class="nav-link">
+  事件循环
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/clap.html" class="nav-link">
+  数组拍平
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/this.html" class="nav-link">
+  this指向、闭包、作用域
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/sqkb.html" class="nav-link">
+  深浅拷贝
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/mxdx.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  ⾯向对象编程/原型链/继承
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>⾯向对象编程/原型链/继承</span> <!----></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h3 id="面向对象编程-原型链-继承"><a href="#面向对象编程-原型链-继承" class="header-anchor">#</a> ⾯向对象编程/原型链/继承</h3> <blockquote><p>⾯向对象编程</p></blockquote> <ol><li>什么是⾯向对象编程？</li></ol> <p>⾯向对象是⼀种编程思想，经常被拿来和⾯向过程⽐较。</p> <ul><li>⾯向过程关注的重点是动词，是分析出解决问题需要的步骤，然后编写函数实现每个步骤，最后依次调⽤函数。</li> <li>⾯向对象关注的重点是主谓，是把构成问题的事物拆解为各个对象，⽽拆解出对象的⽬的也不是为了实现某个步骤，⽽是为了描述这个事物在当前问题中的各种⾏为。</li></ul> <ol start="2"><li>⾯向对象的特点是什么？</li></ol> <ul><li><p>封装：让使⽤对象的⼈不考虑内部实现，只考虑功能使⽤ 把内部的代码保护起来，只留出⼀些 api 接⼝供⽤户使⽤</p></li> <li><p>继承：就是为了代码的复⽤，从⽗类上继承出⼀些⽅法和属性，⼦类也有⾃⼰的⼀些属性</p></li> <li><p>多态：是不同对象作⽤于同⼀操作产⽣不同的效果。多态的思想实际上是把“想做什么”和“谁去做“分开</p></li></ul> <ol start="3"><li>什么时候适合使⽤⾯向对象</li></ol> <p>在⽐较复杂的问题⾯前，或者参与⽅较多的时候，⾯向对象的编程思想可以很好的简化问题，并且能够更好的扩展和维护。</p> <blockquote><p>Js 中的⾯向对象</p></blockquote> <ol><li>对象包含什么</li></ol> <ul><li><p>属性</p></li> <li><p>方法</p></li></ul> <ol start="2"><li>⼀些内置对象</li></ol> <ul><li>Object</li> <li>Array</li> <li>Date</li> <li>Function</li> <li>RegExp</li></ul> <ol start="3"><li><p>创建对象</p></li> <li><p>普通⽅式</p></li></ol> <p>每⼀个新对象都要重新写⼀遍 color 和 start 的赋值</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> Player <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Player<span class="token punctuation">.</span>color <span class="token operator">=</span> <span class="token string">&quot;white&quot;</span><span class="token punctuation">;</span>
+Player<span class="token punctuation">.</span><span class="token function-variable function">start</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;white下棋&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><ol start="2"><li>⼯⼚模式</li></ol> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">createObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ <span class="token keyword">const</span> Player <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ Player<span class="token punctuation">.</span>color <span class="token operator">=</span> <span class="token string">&quot;white&quot;</span><span class="token punctuation">;</span>
+ Player<span class="token punctuation">.</span><span class="token function-variable function">start</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;white下棋&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span><span class="token punctuation">;</span>
+ <span class="token keyword">return</span> Player<span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="这两种方式都无法识别对象类型-比如-player-的类型只是-object"><a href="#这两种方式都无法识别对象类型-比如-player-的类型只是-object" class="header-anchor">#</a> 这两种⽅式都⽆法识别对象类型，⽐如 Player 的类型只是 Object</h4> <ol start="3"><li>构造函数/实例</li></ol> <ul><li>通过 this 添加的属性和⽅法总是指向当前对象的，所以在实例化的时候，通过 this 添加的属性和⽅法都会在内存中复制⼀份，这样就会造成内存的浪费。</li> <li>但是这样创建的好处是即使改变了某⼀个对象的属性或⽅法，不会影响其他的对象（因为每⼀个对象都是复制的⼀份）</li></ul></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/myblog/assets/js/app.9fc450cc.js" defer></script><script src="/myblog/assets/js/2.ab37133f.js" defer></script><script src="/myblog/assets/js/1.3f67ceee.js" defer></script><script src="/myblog/assets/js/33.4c594068.js" defer></script>
+  </body>
+</html>
