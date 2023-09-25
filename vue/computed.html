@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>new操作符 | 初见的博客</title>
+    <title>computed和watch的区别 | 初见的博客</title>
     <meta name="generator" content="VuePress 1.9.10">
     <link rel="icon" href="/myblog/logo.png">
     <meta name="description" content="一年之计在于春，一日之计在于晨">
     
-    <link rel="preload" href="/myblog/assets/css/0.styles.45836390.css" as="style"><link rel="preload" href="/myblog/assets/js/app.7b92a18f.js" as="script"><link rel="preload" href="/myblog/assets/js/2.a98f6d9f.js" as="script"><link rel="preload" href="/myblog/assets/js/1.69ea9afd.js" as="script"><link rel="preload" href="/myblog/assets/js/33.9e8a851f.js" as="script"><link rel="prefetch" href="/myblog/assets/js/10.fd256728.js"><link rel="prefetch" href="/myblog/assets/js/11.89ac9f07.js"><link rel="prefetch" href="/myblog/assets/js/12.3f9f9cf1.js"><link rel="prefetch" href="/myblog/assets/js/13.9d2d66b6.js"><link rel="prefetch" href="/myblog/assets/js/14.cb88526c.js"><link rel="prefetch" href="/myblog/assets/js/15.980f0cec.js"><link rel="prefetch" href="/myblog/assets/js/16.f4bf23f4.js"><link rel="prefetch" href="/myblog/assets/js/17.3ceb826c.js"><link rel="prefetch" href="/myblog/assets/js/18.b434740f.js"><link rel="prefetch" href="/myblog/assets/js/19.b0466d00.js"><link rel="prefetch" href="/myblog/assets/js/20.e01d7e8b.js"><link rel="prefetch" href="/myblog/assets/js/21.491ae04b.js"><link rel="prefetch" href="/myblog/assets/js/22.6efc7ed2.js"><link rel="prefetch" href="/myblog/assets/js/23.1e80f02f.js"><link rel="prefetch" href="/myblog/assets/js/24.db16339a.js"><link rel="prefetch" href="/myblog/assets/js/25.6776365f.js"><link rel="prefetch" href="/myblog/assets/js/26.bae75ee3.js"><link rel="prefetch" href="/myblog/assets/js/27.0a3ce2f4.js"><link rel="prefetch" href="/myblog/assets/js/28.f5e10bbb.js"><link rel="prefetch" href="/myblog/assets/js/29.c19058fb.js"><link rel="prefetch" href="/myblog/assets/js/3.e04a1178.js"><link rel="prefetch" href="/myblog/assets/js/30.b7e9c676.js"><link rel="prefetch" href="/myblog/assets/js/31.fdc40ebc.js"><link rel="prefetch" href="/myblog/assets/js/32.699d5799.js"><link rel="prefetch" href="/myblog/assets/js/34.81262d38.js"><link rel="prefetch" href="/myblog/assets/js/35.dbec2728.js"><link rel="prefetch" href="/myblog/assets/js/36.dee4af8f.js"><link rel="prefetch" href="/myblog/assets/js/37.9eaf3b82.js"><link rel="prefetch" href="/myblog/assets/js/38.55a06a3b.js"><link rel="prefetch" href="/myblog/assets/js/39.6b3eefd4.js"><link rel="prefetch" href="/myblog/assets/js/4.6aaf9938.js"><link rel="prefetch" href="/myblog/assets/js/5.868c619a.js"><link rel="prefetch" href="/myblog/assets/js/6.11ff47cc.js"><link rel="prefetch" href="/myblog/assets/js/7.3acf3203.js"><link rel="prefetch" href="/myblog/assets/js/vendors~docsearch.5a4296f1.js">
+    <link rel="preload" href="/myblog/assets/css/0.styles.45836390.css" as="style"><link rel="preload" href="/myblog/assets/js/app.7b92a18f.js" as="script"><link rel="preload" href="/myblog/assets/js/2.a98f6d9f.js" as="script"><link rel="preload" href="/myblog/assets/js/1.69ea9afd.js" as="script"><link rel="preload" href="/myblog/assets/js/37.9eaf3b82.js" as="script"><link rel="prefetch" href="/myblog/assets/js/10.fd256728.js"><link rel="prefetch" href="/myblog/assets/js/11.89ac9f07.js"><link rel="prefetch" href="/myblog/assets/js/12.3f9f9cf1.js"><link rel="prefetch" href="/myblog/assets/js/13.9d2d66b6.js"><link rel="prefetch" href="/myblog/assets/js/14.cb88526c.js"><link rel="prefetch" href="/myblog/assets/js/15.980f0cec.js"><link rel="prefetch" href="/myblog/assets/js/16.f4bf23f4.js"><link rel="prefetch" href="/myblog/assets/js/17.3ceb826c.js"><link rel="prefetch" href="/myblog/assets/js/18.b434740f.js"><link rel="prefetch" href="/myblog/assets/js/19.b0466d00.js"><link rel="prefetch" href="/myblog/assets/js/20.e01d7e8b.js"><link rel="prefetch" href="/myblog/assets/js/21.491ae04b.js"><link rel="prefetch" href="/myblog/assets/js/22.6efc7ed2.js"><link rel="prefetch" href="/myblog/assets/js/23.1e80f02f.js"><link rel="prefetch" href="/myblog/assets/js/24.db16339a.js"><link rel="prefetch" href="/myblog/assets/js/25.6776365f.js"><link rel="prefetch" href="/myblog/assets/js/26.bae75ee3.js"><link rel="prefetch" href="/myblog/assets/js/27.0a3ce2f4.js"><link rel="prefetch" href="/myblog/assets/js/28.f5e10bbb.js"><link rel="prefetch" href="/myblog/assets/js/29.c19058fb.js"><link rel="prefetch" href="/myblog/assets/js/3.e04a1178.js"><link rel="prefetch" href="/myblog/assets/js/30.b7e9c676.js"><link rel="prefetch" href="/myblog/assets/js/31.fdc40ebc.js"><link rel="prefetch" href="/myblog/assets/js/32.699d5799.js"><link rel="prefetch" href="/myblog/assets/js/33.9e8a851f.js"><link rel="prefetch" href="/myblog/assets/js/34.81262d38.js"><link rel="prefetch" href="/myblog/assets/js/35.dbec2728.js"><link rel="prefetch" href="/myblog/assets/js/36.dee4af8f.js"><link rel="prefetch" href="/myblog/assets/js/38.55a06a3b.js"><link rel="prefetch" href="/myblog/assets/js/39.6b3eefd4.js"><link rel="prefetch" href="/myblog/assets/js/4.6aaf9938.js"><link rel="prefetch" href="/myblog/assets/js/5.868c619a.js"><link rel="prefetch" href="/myblog/assets/js/6.11ff47cc.js"><link rel="prefetch" href="/myblog/assets/js/7.3acf3203.js"><link rel="prefetch" href="/myblog/assets/js/vendors~docsearch.5a4296f1.js">
     <link rel="stylesheet" href="/myblog/assets/css/0.styles.45836390.css">
   </head>
   <body>
@@ -28,7 +28,7 @@
   call apply bind 的作用和区别
 </a></li><li class="dropdown-item"><!----> <a href="/myblog/js/throttle.html" class="nav-link">
   节流和防抖
-</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/new.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/new.html" class="nav-link">
   new操作符
 </a></li><li class="dropdown-item"><!----> <a href="/myblog/js/event.html" class="nav-link">
   事件循环
@@ -42,7 +42,7 @@
   ⾯向对象编程/原型链/继承
 </a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="VUE" class="dropdown-title"><span class="title">VUE</span> <span class="arrow down"></span></button> <button type="button" aria-label="VUE" class="mobile-dropdown-title"><span class="title">VUE</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/vue/difference.html" class="nav-link">
   vue2和vue3的区别
-</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/computed.html" class="nav-link">
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/computed.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
   computed和watch的区别
 </a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/vueJs.html" class="nav-link">
   vue2基础
@@ -62,7 +62,7 @@
   call apply bind 的作用和区别
 </a></li><li class="dropdown-item"><!----> <a href="/myblog/js/throttle.html" class="nav-link">
   节流和防抖
-</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/new.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/new.html" class="nav-link">
   new操作符
 </a></li><li class="dropdown-item"><!----> <a href="/myblog/js/event.html" class="nav-link">
   事件循环
@@ -76,11 +76,13 @@
   ⾯向对象编程/原型链/继承
 </a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="VUE" class="dropdown-title"><span class="title">VUE</span> <span class="arrow down"></span></button> <button type="button" aria-label="VUE" class="mobile-dropdown-title"><span class="title">VUE</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/vue/difference.html" class="nav-link">
   vue2和vue3的区别
-</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/computed.html" class="nav-link">
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/computed.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
   computed和watch的区别
 </a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/vueJs.html" class="nav-link">
   vue2基础
-</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>new操作符</span> <!----></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="new操作符"><a href="#new操作符" class="header-anchor">#</a> new操作符</h1> <ol><li>new 创建了一个新的对象</li> <li>这个对象的proto指向函数的prototyepe</li> <li>将this指向这个对象</li> <li>看构造函数的返回值是否是对象 是就返回这个对象 不是就返回新创建的对象</li></ol></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
-    <script src="/myblog/assets/js/app.7b92a18f.js" defer></script><script src="/myblog/assets/js/2.a98f6d9f.js" defer></script><script src="/myblog/assets/js/1.69ea9afd.js" defer></script><script src="/myblog/assets/js/33.9e8a851f.js" defer></script>
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>computed和watch的区别</span> <!----></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h3 id="computed和watch的区别"><a href="#computed和watch的区别" class="header-anchor">#</a> computed和watch的区别</h3> <p>共同点：都具有缓存作用</p> <div class="language-js extra-class"><pre class="language-js"><code>computed：具有缓存作用，只有依赖的值发生变化时才会改变
+watch监听data中的变量，当data的中的变量发生变化是 就会调用watch中的方法
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/myblog/assets/js/app.7b92a18f.js" defer></script><script src="/myblog/assets/js/2.a98f6d9f.js" defer></script><script src="/myblog/assets/js/1.69ea9afd.js" defer></script><script src="/myblog/assets/js/37.9eaf3b82.js" defer></script>
   </body>
 </html>
