@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ES6 系列之模板字符串 | 初见的博客</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/myblog/logo.png">
+    <meta name="description" content="一年之计在于春，一日之计在于晨">
+    
+    <link rel="preload" href="/myblog/assets/css/0.styles.3755d74c.css" as="style"><link rel="preload" href="/myblog/assets/js/app.b361854d.js" as="script"><link rel="preload" href="/myblog/assets/js/2.ab37133f.js" as="script"><link rel="preload" href="/myblog/assets/js/1.3f67ceee.js" as="script"><link rel="preload" href="/myblog/assets/js/25.7a42c620.js" as="script"><link rel="prefetch" href="/myblog/assets/js/10.0ab8f3c6.js"><link rel="prefetch" href="/myblog/assets/js/11.9f55e46b.js"><link rel="prefetch" href="/myblog/assets/js/12.41e41b87.js"><link rel="prefetch" href="/myblog/assets/js/13.37d788cf.js"><link rel="prefetch" href="/myblog/assets/js/14.bc2bab3a.js"><link rel="prefetch" href="/myblog/assets/js/15.19b29af1.js"><link rel="prefetch" href="/myblog/assets/js/16.d61dd96b.js"><link rel="prefetch" href="/myblog/assets/js/17.cb5e3c25.js"><link rel="prefetch" href="/myblog/assets/js/18.521dbbdb.js"><link rel="prefetch" href="/myblog/assets/js/19.dcced78b.js"><link rel="prefetch" href="/myblog/assets/js/20.92d99f7e.js"><link rel="prefetch" href="/myblog/assets/js/21.cc998f0c.js"><link rel="prefetch" href="/myblog/assets/js/22.661f1850.js"><link rel="prefetch" href="/myblog/assets/js/23.129803c5.js"><link rel="prefetch" href="/myblog/assets/js/24.2240fa94.js"><link rel="prefetch" href="/myblog/assets/js/26.a4a058c0.js"><link rel="prefetch" href="/myblog/assets/js/27.d49ed8e4.js"><link rel="prefetch" href="/myblog/assets/js/28.80f039a2.js"><link rel="prefetch" href="/myblog/assets/js/29.5e22931a.js"><link rel="prefetch" href="/myblog/assets/js/3.f31ba51a.js"><link rel="prefetch" href="/myblog/assets/js/30.78bbfb70.js"><link rel="prefetch" href="/myblog/assets/js/31.df3e113b.js"><link rel="prefetch" href="/myblog/assets/js/32.ad62d113.js"><link rel="prefetch" href="/myblog/assets/js/33.28170ac3.js"><link rel="prefetch" href="/myblog/assets/js/34.fa8aee43.js"><link rel="prefetch" href="/myblog/assets/js/35.cc099b90.js"><link rel="prefetch" href="/myblog/assets/js/36.73980f71.js"><link rel="prefetch" href="/myblog/assets/js/37.7493524d.js"><link rel="prefetch" href="/myblog/assets/js/4.257a497a.js"><link rel="prefetch" href="/myblog/assets/js/5.3c89e32a.js"><link rel="prefetch" href="/myblog/assets/js/6.1556cbc9.js"><link rel="prefetch" href="/myblog/assets/js/7.562f9f76.js"><link rel="prefetch" href="/myblog/assets/js/vendors~docsearch.271bc088.js">
+    <link rel="stylesheet" href="/myblog/assets/css/0.styles.3755d74c.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/myblog/" class="home-link router-link-active"><!----> <span class="site-name">初见的博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="ES6" class="dropdown-title"><span class="title">ES6</span> <span class="arrow down"></span></button> <button type="button" aria-label="ES6" class="mobile-dropdown-title"><span class="title">ES6</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/es6module/index.html" class="nav-link">
+  es6基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/ergodic.html" class="nav-link">
+  for of 迭代器
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/arrow.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  模板字符串
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/set.html" class="nav-link">
+  实现一个Set数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/WeakMap.html" class="nav-link">
+  WeakMap
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/promise.html" class="nav-link">
+  聊聊promise
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Js" class="dropdown-title"><span class="title">Js</span> <span class="arrow down"></span></button> <button type="button" aria-label="Js" class="mobile-dropdown-title"><span class="title">Js</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/js/index.html" class="nav-link">
+  call、apply、bind的区别
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/throttle.html" class="nav-link">
+  节流防抖
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/new.html" class="nav-link">
+  new操作符
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/event.html" class="nav-link">
+  事件循环
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/clap.html" class="nav-link">
+  数组拍平
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/this.html" class="nav-link">
+  this指向、闭包、作用域
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/sqkb.html" class="nav-link">
+  深浅拷贝
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/mxdx.html" class="nav-link">
+  ⾯向对象编程/原型链/继承
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="ES6" class="dropdown-title"><span class="title">ES6</span> <span class="arrow down"></span></button> <button type="button" aria-label="ES6" class="mobile-dropdown-title"><span class="title">ES6</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/es6module/index.html" class="nav-link">
+  es6基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/ergodic.html" class="nav-link">
+  for of 迭代器
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/arrow.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  模板字符串
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/set.html" class="nav-link">
+  实现一个Set数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/WeakMap.html" class="nav-link">
+  WeakMap
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/promise.html" class="nav-link">
+  聊聊promise
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Js" class="dropdown-title"><span class="title">Js</span> <span class="arrow down"></span></button> <button type="button" aria-label="Js" class="mobile-dropdown-title"><span class="title">Js</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/js/index.html" class="nav-link">
+  call、apply、bind的区别
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/throttle.html" class="nav-link">
+  节流防抖
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/new.html" class="nav-link">
+  new操作符
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/event.html" class="nav-link">
+  事件循环
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/clap.html" class="nav-link">
+  数组拍平
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/this.html" class="nav-link">
+  this指向、闭包、作用域
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/sqkb.html" class="nav-link">
+  深浅拷贝
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/mxdx.html" class="nav-link">
+  ⾯向对象编程/原型链/继承
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>ES6 系列之模板字符串</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/myblog/es6module/arrow.html#es6-系列之模板字符串" class="sidebar-link">ES6 系列之模板字符串</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myblog/es6module/arrow.html#基础用法" class="sidebar-link">基础用法</a></li><li class="sidebar-sub-header"><a href="/myblog/es6module/arrow.html#嵌入变量" class="sidebar-link">嵌入变量</a></li><li class="sidebar-sub-header"><a href="/myblog/es6module/arrow.html#标签模板" class="sidebar-link">标签模板</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="es6-系列之模板字符串"><a href="#es6-系列之模板字符串" class="header-anchor">#</a> ES6 系列之模板字符串</h2> <h3 id="基础用法"><a href="#基础用法" class="header-anchor">#</a> 基础用法</h3> <div class="language-js extra-class"><pre class="language-js"><code>  <span class="token keyword">let</span> message <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Hello World</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>如果你碰巧要在字符串中使用反撇号，你可以使用反斜杠转义：</p> <div class="language-js extra-class"><pre class="language-js"><code>  <span class="token keyword">let</span> message <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Hello \` World</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>值得一提的是，在模板字符串中，空格、缩进、换行都会被保留：</p> <div class="language-js extra-class"><pre class="language-js"><code>  <span class="token keyword">let</span> message <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+	&lt;ul&gt;
+		&lt;li&gt;1&lt;/li&gt;
+		&lt;li&gt;2&lt;/li&gt;
+	&lt;/ul&gt;
+  </span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="嵌入变量"><a href="#嵌入变量" class="header-anchor">#</a> 嵌入变量</h3> <p>模板字符串支持嵌入变量，只需要将变量名写在 ${} 之中，其实不止变量，任意的 JavaScript 表达式都是可以的：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> y <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> message <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;ul&gt;&lt;li&gt;</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>x<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/li&gt;&lt;li&gt;</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>x <span class="token operator">+</span> y<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/li&gt;&lt;/ul&gt;</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;ul&gt;&lt;li&gt;1&lt;/li&gt;&lt;li&gt;3&lt;/li&gt;&lt;/ul&gt;</span>
+</code></pre></div><h3 id="标签模板"><a href="#标签模板" class="header-anchor">#</a> 标签模板</h3> <p>模板标签是一个非常重要的能力，模板字符串可以紧跟在一个函数名后面，该函数将被调用来处理这个模板字符串，举个例子：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token string">'Hi'</span><span class="token punctuation">,</span> y <span class="token operator">=</span> <span class="token string">'Kevin'</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> res <span class="token operator">=</span> message<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>x<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">, I am </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>y<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/myblog/assets/js/app.b361854d.js" defer></script><script src="/myblog/assets/js/2.ab37133f.js" defer></script><script src="/myblog/assets/js/1.3f67ceee.js" defer></script><script src="/myblog/assets/js/25.7a42c620.js" defer></script>
+  </body>
+</html>
