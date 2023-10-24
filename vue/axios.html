@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>axios在vue中的封装及使用 | 初见的博客</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/myblog/logo.png">
+    <meta name="description" content="一年之计在于春，一日之计在于晨">
+    
+    <link rel="preload" href="/myblog/assets/css/0.styles.08f35963.css" as="style"><link rel="preload" href="/myblog/assets/js/app.8b7d21f8.js" as="script"><link rel="preload" href="/myblog/assets/js/7.8d17ee5e.js" as="script"><link rel="preload" href="/myblog/assets/js/2.e73532cd.js" as="script"><link rel="preload" href="/myblog/assets/js/1.74d3146f.js" as="script"><link rel="preload" href="/myblog/assets/js/61.e92a1440.js" as="script"><link rel="prefetch" href="/myblog/assets/js/10.313be986.js"><link rel="prefetch" href="/myblog/assets/js/11.5dd415fb.js"><link rel="prefetch" href="/myblog/assets/js/14.9dc64561.js"><link rel="prefetch" href="/myblog/assets/js/15.fcb98772.js"><link rel="prefetch" href="/myblog/assets/js/16.feb15059.js"><link rel="prefetch" href="/myblog/assets/js/17.a6a18900.js"><link rel="prefetch" href="/myblog/assets/js/18.6598ee33.js"><link rel="prefetch" href="/myblog/assets/js/19.7d21c2a4.js"><link rel="prefetch" href="/myblog/assets/js/20.9e7dadae.js"><link rel="prefetch" href="/myblog/assets/js/21.2c90b4cf.js"><link rel="prefetch" href="/myblog/assets/js/22.c3721e9d.js"><link rel="prefetch" href="/myblog/assets/js/23.aa2f047e.js"><link rel="prefetch" href="/myblog/assets/js/24.23ace95e.js"><link rel="prefetch" href="/myblog/assets/js/25.a155f2a3.js"><link rel="prefetch" href="/myblog/assets/js/26.025b4c51.js"><link rel="prefetch" href="/myblog/assets/js/27.29617493.js"><link rel="prefetch" href="/myblog/assets/js/28.0d31f6aa.js"><link rel="prefetch" href="/myblog/assets/js/29.877a6b5c.js"><link rel="prefetch" href="/myblog/assets/js/3.ce235bdf.js"><link rel="prefetch" href="/myblog/assets/js/30.6b4951fa.js"><link rel="prefetch" href="/myblog/assets/js/31.6e60cea1.js"><link rel="prefetch" href="/myblog/assets/js/32.a5c558d2.js"><link rel="prefetch" href="/myblog/assets/js/33.270d0047.js"><link rel="prefetch" href="/myblog/assets/js/34.ce57c764.js"><link rel="prefetch" href="/myblog/assets/js/35.5b94dcd3.js"><link rel="prefetch" href="/myblog/assets/js/36.21eb5999.js"><link rel="prefetch" href="/myblog/assets/js/37.57550c3a.js"><link rel="prefetch" href="/myblog/assets/js/38.8fbe4938.js"><link rel="prefetch" href="/myblog/assets/js/39.a904786c.js"><link rel="prefetch" href="/myblog/assets/js/4.cc239dbc.js"><link rel="prefetch" href="/myblog/assets/js/40.9a4bbb37.js"><link rel="prefetch" href="/myblog/assets/js/41.8b7b9e82.js"><link rel="prefetch" href="/myblog/assets/js/42.d7f7c838.js"><link rel="prefetch" href="/myblog/assets/js/43.503b386e.js"><link rel="prefetch" href="/myblog/assets/js/44.b976a2e1.js"><link rel="prefetch" href="/myblog/assets/js/45.2614aa51.js"><link rel="prefetch" href="/myblog/assets/js/46.e969f014.js"><link rel="prefetch" href="/myblog/assets/js/47.92c1d80e.js"><link rel="prefetch" href="/myblog/assets/js/48.a666ae61.js"><link rel="prefetch" href="/myblog/assets/js/49.ae1e137c.js"><link rel="prefetch" href="/myblog/assets/js/5.d84a7528.js"><link rel="prefetch" href="/myblog/assets/js/50.a9161ce5.js"><link rel="prefetch" href="/myblog/assets/js/51.6f91684d.js"><link rel="prefetch" href="/myblog/assets/js/52.077a7eb2.js"><link rel="prefetch" href="/myblog/assets/js/53.81f276c5.js"><link rel="prefetch" href="/myblog/assets/js/54.e4bc783e.js"><link rel="prefetch" href="/myblog/assets/js/55.9723121c.js"><link rel="prefetch" href="/myblog/assets/js/56.4185c77b.js"><link rel="prefetch" href="/myblog/assets/js/57.7e341795.js"><link rel="prefetch" href="/myblog/assets/js/58.a4e4292c.js"><link rel="prefetch" href="/myblog/assets/js/59.e255e0e7.js"><link rel="prefetch" href="/myblog/assets/js/6.1ac8b290.js"><link rel="prefetch" href="/myblog/assets/js/60.b361890a.js"><link rel="prefetch" href="/myblog/assets/js/62.01da118a.js"><link rel="prefetch" href="/myblog/assets/js/63.5793ef49.js"><link rel="prefetch" href="/myblog/assets/js/64.9c219f2c.js"><link rel="prefetch" href="/myblog/assets/js/65.417486da.js"><link rel="prefetch" href="/myblog/assets/js/66.8e14241a.js"><link rel="prefetch" href="/myblog/assets/js/67.09e24e92.js"><link rel="prefetch" href="/myblog/assets/js/8.470738b1.js"><link rel="prefetch" href="/myblog/assets/js/9.6638e589.js"><link rel="prefetch" href="/myblog/assets/js/vendors~docsearch.6106b899.js">
+    <link rel="stylesheet" href="/myblog/assets/css/0.styles.08f35963.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>初见的博客</h3> <p class="description" data-v-59e6cb88>一年之计在于春，一日之计在于晨</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2023
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/myblog/" class="home-link router-link-active"><!----> <span class="site-name">初见的博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      JS
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/js/index.html" class="nav-link"><i class="undefined"></i>
+  call apply bind 的作用和区别
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/throttle.html" class="nav-link"><i class="undefined"></i>
+  节流和防抖
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/new.html" class="nav-link"><i class="undefined"></i>
+  new操作符
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/event.html" class="nav-link"><i class="undefined"></i>
+  事件循环
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/clap.html" class="nav-link"><i class="undefined"></i>
+  数组拍平
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/this.html" class="nav-link"><i class="undefined"></i>
+  this指向、闭包、作用域
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/sqkb.html" class="nav-link"><i class="undefined"></i>
+  深浅拷贝
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/mxdx.html" class="nav-link"><i class="undefined"></i>
+  ⾯向对象编程/原型链/继承
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/bubble-trapping.html" class="nav-link"><i class="undefined"></i>
+  冒泡和捕获
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/cache.html" class="nav-link"><i class="undefined"></i>
+  前端缓存
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/array.html" class="nav-link"><i class="undefined"></i>
+  数组常用方法
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/performance-opt.html" class="nav-link"><i class="undefined"></i>
+  前端性能优化
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/ts.html" class="nav-link"><i class="undefined"></i>
+  TS中的基本类型
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      ES6
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/es6module/index.html" class="nav-link"><i class="undefined"></i>
+  es6基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/ergodic.html" class="nav-link"><i class="undefined"></i>
+  for of 迭代器
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/arrow.html" class="nav-link"><i class="undefined"></i>
+  模板字符串
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/set.html" class="nav-link"><i class="undefined"></i>
+  实现一个 Set 数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/WeakMap.html" class="nav-link"><i class="undefined"></i>
+  WeakMap
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/promise.html" class="nav-link"><i class="undefined"></i>
+  聊聊promise
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      VUE
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/vue/difference.html" class="nav-link"><i class="undefined"></i>
+  vue2和vue3的区别
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/computed.html" class="nav-link"><i class="undefined"></i>
+  computed和watch的区别
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/vueJs.html" class="nav-link"><i class="undefined"></i>
+  vue2基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/axios.html" aria-current="page" class="nav-link router-link-exact-active router-link-active"><i class="undefined"></i>
+  axios封装
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/vue-router.html" class="nav-link"><i class="undefined"></i>
+  vue-router
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Node.js
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/Node.js/node-basic.html" class="nav-link"><i class="undefined"></i>
+  nodejs基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/Node.js/node-frame.html" class="nav-link"><i class="undefined"></i>
+  nodejs常用框架
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      webpack
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/webpack/webpack-basic.html" class="nav-link"><i class="undefined"></i>
+  webpack基础
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Angular.js
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/Angular.js/Angular.html" class="nav-link"><i class="undefined"></i>
+  Angular.js框架
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <!----> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>26</h3> <h6 data-v-1fad0c41>Articles</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>2</h3> <h6 data-v-1fad0c41>Tags</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      JS
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/js/index.html" class="nav-link"><i class="undefined"></i>
+  call apply bind 的作用和区别
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/throttle.html" class="nav-link"><i class="undefined"></i>
+  节流和防抖
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/new.html" class="nav-link"><i class="undefined"></i>
+  new操作符
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/event.html" class="nav-link"><i class="undefined"></i>
+  事件循环
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/clap.html" class="nav-link"><i class="undefined"></i>
+  数组拍平
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/this.html" class="nav-link"><i class="undefined"></i>
+  this指向、闭包、作用域
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/sqkb.html" class="nav-link"><i class="undefined"></i>
+  深浅拷贝
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/mxdx.html" class="nav-link"><i class="undefined"></i>
+  ⾯向对象编程/原型链/继承
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/bubble-trapping.html" class="nav-link"><i class="undefined"></i>
+  冒泡和捕获
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/cache.html" class="nav-link"><i class="undefined"></i>
+  前端缓存
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/array.html" class="nav-link"><i class="undefined"></i>
+  数组常用方法
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/performance-opt.html" class="nav-link"><i class="undefined"></i>
+  前端性能优化
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/ts.html" class="nav-link"><i class="undefined"></i>
+  TS中的基本类型
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      ES6
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/es6module/index.html" class="nav-link"><i class="undefined"></i>
+  es6基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/ergodic.html" class="nav-link"><i class="undefined"></i>
+  for of 迭代器
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/arrow.html" class="nav-link"><i class="undefined"></i>
+  模板字符串
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/set.html" class="nav-link"><i class="undefined"></i>
+  实现一个 Set 数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/WeakMap.html" class="nav-link"><i class="undefined"></i>
+  WeakMap
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/promise.html" class="nav-link"><i class="undefined"></i>
+  聊聊promise
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      VUE
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/vue/difference.html" class="nav-link"><i class="undefined"></i>
+  vue2和vue3的区别
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/computed.html" class="nav-link"><i class="undefined"></i>
+  computed和watch的区别
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/vueJs.html" class="nav-link"><i class="undefined"></i>
+  vue2基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/axios.html" aria-current="page" class="nav-link router-link-exact-active router-link-active"><i class="undefined"></i>
+  axios封装
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/vue-router.html" class="nav-link"><i class="undefined"></i>
+  vue-router
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Node.js
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/Node.js/node-basic.html" class="nav-link"><i class="undefined"></i>
+  nodejs基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/Node.js/node-frame.html" class="nav-link"><i class="undefined"></i>
+  nodejs常用框架
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      webpack
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/webpack/webpack-basic.html" class="nav-link"><i class="undefined"></i>
+  webpack基础
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Angular.js
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/Angular.js/Angular.html" class="nav-link"><i class="undefined"></i>
+  Angular.js框架
+</a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88></h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2023
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">axios在vue中的封装及使用</h1> <div data-v-8a445198><!----> <!----> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h2 id="axios在vue中的封装及使用"><a href="#axios在vue中的封装及使用" class="header-anchor">#</a> axios在vue中的封装及使用</h2> <h2 id="一、直接用封装好的vue-axios-我不推荐使用-感觉还是有点难用"><a href="#一、直接用封装好的vue-axios-我不推荐使用-感觉还是有点难用" class="header-anchor">#</a> 一、直接用封装好的vue-axios（我不推荐使用，感觉还是有点难用）</h2> <p>安装</p> <p>npm install --save axios vue-axios</p> <p>将下面代码加入main.js入口文件:</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">'axios'</span>
+<span class="token keyword">import</span> VueAxios <span class="token keyword">from</span> <span class="token string">'vue-axios'</span>
+
+<span class="token class-name">Vue</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>$axios <span class="token operator">=</span> axios    <span class="token comment">//全局注册，使用方法为:this.$axios</span>
+Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>VueAxios<span class="token punctuation">,</span> axios<span class="token punctuation">)</span>
+</code></pre></div><p>在页面中使用它</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+    <span class="token keyword">export</span> <span class="token keyword">default</span><span class="token punctuation">{</span>
+        <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span><span class="token punctuation">{</span>
+            token：<span class="token string">&quot;token&quot;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function">created</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$axios</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                <span class="token literal-property property">method</span><span class="token operator">:</span><span class="token string">'post'</span><span class="token punctuation">,</span>
+                <span class="token literal-property property">url</span><span class="token operator">:</span><span class="token string">'api'</span><span class="token punctuation">,</span>
+                <span class="token literal-property property">data</span><span class="token operator">:</span><span class="token punctuation">{</span>  
+                     <span class="token comment">//这里是发送给后台的数据</span>
+                      <span class="token literal-property property">token</span><span class="token operator">:</span><span class="token keyword">this</span><span class="token punctuation">.</span>token
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span><span class="token punctuation">{</span>        
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span>       <span class="token comment">//请求成功返回的数据</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>         <span class="token comment">//请求失败返回的数据</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre></div><h2 id="二、自己封装的axios"><a href="#二、自己封装的axios" class="header-anchor">#</a> 二、自己封装的axios</h2> <p>axios 是一个基于 Promise 的http请求库, 它支持浏览器和node.js以及promise，能拦截请求和响应，也能取消请求，而且可以自动转换JSON数据，浏览器端支持防止CSRF(跨站请求伪造)等等。</p> <h4 id="_1、安装"><a href="#_1、安装" class="header-anchor">#</a> 1、安装</h4> <div class="language-js extra-class"><pre class="language-js"><code>npm install axios<span class="token punctuation">;</span> <span class="token comment">// 安装axios</span>
+</code></pre></div><h4 id="_2、在项目目录下引入axios"><a href="#_2、在项目目录下引入axios" class="header-anchor">#</a> 2、在项目目录下引入axios</h4> <p>我通常习惯在src根目录下创建一个request文件夹（这是当时做后台管理系统的时候学来的），在request文件夹里创建api.js用来管理封装接口，创建axios.js用来封装axios。到时候随着后台接口的增多和模块化，可以根据不同的模块创建不同的js文件或者文件夹便于管理api。</p> <ul><li>下面是我总结的常用的一个axios.js文件的封装，注释部分需要结合自身实际情况修改</li></ul> <p>1、baseURL</p> <p>2、请求拦截器，例如请求的时候在头部加上请求的token</p> <p>3、响应拦截器，例如判断状态，过期清除token</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">'axios'</span><span class="token punctuation">;</span>
+
+<span class="token comment">//  让请求在浏览器中允许跨域携带cookie</span>
+axios<span class="token punctuation">.</span>defaults<span class="token punctuation">.</span>withCredentials <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 使用自定义配置新建一个 axios 实例</span>
+<span class="token keyword">const</span> service<span class="token operator">=</span> axios<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+   <span class="token comment">// 基础的请求地址</span>
+    <span class="token literal-property property">baseURL</span><span class="token operator">:</span> <span class="token string">'https://some-domain.com/api/'</span><span class="token punctuation">,</span>
+   <span class="token comment">// 设置超时时间 5s</span>
+    <span class="token literal-property property">timeout</span><span class="token operator">:</span> <span class="token number">5000</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 添加超时后的处理（axios中需要你根据error信息来进行判断）</span>
+<span class="token function">axios</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">error</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> message <span class="token punctuation">}</span> <span class="token operator">=</span> error<span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>error<span class="token punctuation">.</span>code <span class="token operator">===</span> <span class="token string">'ECONNABORTED'</span> <span class="token operator">&amp;&amp;</span> message<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'timeout'</span><span class="token punctuation">)</span><span class="token operator">&gt;</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">// 超时处理，可以直接弹出错误或者重新发起一次请求</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">&quot;请求超时！请检查网络问题&quot;</span><span class="token punctuation">)</span>；
+        <span class="token comment">//  let newHttp= new Promise(function (resolve){</span>
+        <span class="token comment">//      resolve()</span>
+        <span class="token comment">//  })</span>
+            <span class="token comment">//  newHttp实例执行完成后会再次执行</span>
+            <span class="token comment">//  返回一个promise实例，同时重新发起请求，config请求配置，包扩请求头和请求参数</span>
+        <span class="token comment">//  return newHttp.then(function (){</span>
+        <span class="token comment">//      return  axios.create({baseURL: 'https://some-domain.com/api/',timeout: 5000});</span>
+        <span class="token comment">//  })</span>
+
+  <span class="token punctuation">}</span>
+    <span class="token comment">// 若不是超时,则返回未错误信息</span>
+    <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 请求拦截器，例如请求的时候在头部加上请求的token</span>
+service<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>request<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token parameter">config</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+   <span class="token comment">//  if (localStorage.getItem('token')) {</span>
+
+   <span class="token comment">//     config.headers.ACCESS_TOKEN = localStorage.getItem('token');</span>
+
+  <span class="token comment">//  }</span>
+
+    <span class="token keyword">return</span> config<span class="token punctuation">;</span>  <span class="token comment">//  有且必须有一个config对象被返回</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token parameter">error</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+   <span class="token comment">//   对请求错误做些什么</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token comment">// 响应拦截器,例如判断服务器返回的状态，400，500啥的，其实超时可以写到这里面来，我分开写了一个比较直观</span>
+service<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>response<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>
+    <span class="token parameter">response</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>response<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">// 服务器状态码不是200的情况,这些自定义（需要与后台商量返回）</span>
+    <span class="token parameter">error</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>
+           <span class="token number">400</span> <span class="token operator">&lt;=</span> error<span class="token punctuation">.</span>response<span class="token punctuation">.</span>status <span class="token operator">&lt;</span><span class="token number">500</span>
+        <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">&quot;用户信息过期，请重新登陆&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 清除token</span>
+            <span class="token comment">// localStorage.removeItem(&quot;token&quot;);</span>
+            <span class="token comment">// 跳转登录</span>
+            <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            <span class="token comment">//   window.location.href = &quot;/login&quot;;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>error<span class="token punctuation">.</span>response<span class="token punctuation">.</span>status <span class="token operator">&gt;=</span> <span class="token number">500</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">&quot;服务器开小差了，请稍后再试！&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">&quot;服务器开小差了，请稍后再试！&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> service<span class="token punctuation">;</span>
+</code></pre></div><ul><li>下面是我api.js接口文件的管理，需要结合自身实际情况修改</li></ul> <p>1、url ：请求接口的地址（就是baseURL后面的哪部分）</p> <p>2、method：请求方法</p> <p>3、data：post请求中携带的数据（obj格式），params：get请求中携带的数据（就是在浏览器地址xx/xx/xx后面?XX=oo&amp;XX=oo这部分数据，obj格式）</p> <p>4、传过来的参数一定要在（query）=&gt;{ } 括号中引入，函数里面才能用</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 刚刚封装的axios</span>
+<span class="token keyword">import</span> request <span class="token keyword">from</span> <span class="token string">'./axios'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 1.获取图片验证码</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">getImgCode</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">'/image/code'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">'get'</span><span class="token punctuation">,</span>
+        <span class="token comment">// 图片验证码 response类型设置成blob，图片才能显示出来</span>
+        <span class="token literal-property property">responseType</span><span class="token operator">:</span> <span class="token string">&quot;blob&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token comment">// 2.获取手机验证码</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">getPhoneCode</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">query</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">'/user/messageCode'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">'post'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">data</span><span class="token operator">:</span> query
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 3. 获取用户任务列表</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">getUserTask</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">query</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">'/task/select'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">'get'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">params</span><span class="token operator">:</span> query
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 4. 搜索任务接口</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">queryTask</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">query1<span class="token punctuation">,</span> query2</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">'/task/query'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">'post'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">data</span><span class="token operator">:</span> query1<span class="token punctuation">,</span>
+        <span class="token literal-property property">params</span><span class="token operator">:</span> query2
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ul><li>在xx.vue页面中的实际操作
+1、标签顶部将刚刚封装的api引入import { getImgCode, getUserTask } from &quot;../request/api&quot;;</li></ul> <p>2、方法使用：getImgCode().then(res=&gt;{}).catch(res=&gt;{})</p> <p>3、下面提供了登陆时候做图片验证码的一个操作</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;code&quot;</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>img <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;codeimg&quot;</span> <span class="token operator">:</span>src<span class="token operator">=</span><span class="token string">&quot;this.ImgCode&quot;</span> @click<span class="token operator">=</span><span class="token string">&quot;getCode&quot;</span> alt <span class="token operator">/</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">&quot;text&quot;</span> name<span class="token operator">=</span><span class="token string">&quot;验证码&quot;</span> placeholder<span class="token operator">=</span><span class="token string">&quot;验证码&quot;</span> v<span class="token operator">-</span>model<span class="token operator">=</span><span class="token string">&quot;code&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> getImgCode<span class="token punctuation">,</span> getUserTask <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;../request/api&quot;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span> <span class="token literal-property property">ImgCode</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> <span class="token literal-property property">phone</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> <span class="token literal-property property">password</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> <span class="token literal-property property">code</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token function">mounted</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    
+    <span class="token comment">// 初始化页面之前获取图片验证码的接口，无需定义方法直接请求</span>
+    <span class="token function">getImgCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> blob <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Blob</span><span class="token punctuation">(</span><span class="token punctuation">[</span>res<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">&quot;image/jpeg&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">let</span> url <span class="token operator">=</span> <span class="token constant">URL</span><span class="token punctuation">.</span><span class="token function">createObjectURL</span><span class="token punctuation">(</span>blob<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">this</span><span class="token punctuation">.</span>ImgCode <span class="token operator">=</span> url<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+         <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">&quot;网络开小差了，没有获取到图片验证码哦&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+
+   <span class="token comment">// 先定义一个方法 getCode，供上面引用，</span>
+    <span class="token function">getCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 传得参数对象</span>
+         <span class="token keyword">let</span> query <span class="token operator">=</span> <span class="token punctuation">{</span>
+          <span class="token literal-property property">a</span><span class="token operator">:</span><span class="token keyword">this</span><span class="token punctuation">.</span>phone<span class="token punctuation">,</span>
+          <span class="token literal-property property">b</span><span class="token operator">:</span><span class="token keyword">this</span><span class="token punctuation">.</span>password
+        <span class="token punctuation">}</span>
+      <span class="token comment">// 请求刚刚引入的封装的接口</span>
+      <span class="token function">getUserTask</span> <span class="token punctuation">(</span>query<span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 成功之后的操作</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 失败时候的操作</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre></div><h2 id="三、使用总结"><a href="#三、使用总结" class="header-anchor">#</a> 三、使用总结</h2> <ol><li>封装axios供之后引用，将baseURL,请求拦截器,响应拦截器 结合实际情况与vuex一起封装</li> <li>在封装api接口文件中引用刚刚封装的axios，把接口url和请求方法method和参数（data/params）定义到每个接口函数中并暴露出来</li> <li>在后缀为.vue的文件中引入api接口文件中需要的接口import { getImgCode, getUserTask } from &quot;../request/api&quot;;</li> <li>在需要的地方使用getImgCode().then(res=&gt;{}).catch(res=&gt;{})</li></ol> <h2 id="四、axios优点-特性"><a href="#四、axios优点-特性" class="header-anchor">#</a> 四、axios优点（特性）</h2> <h3 id="axios-是一个基于-promise-的-http-库-可以用在浏览器和-node-js-中。"><a href="#axios-是一个基于-promise-的-http-库-可以用在浏览器和-node-js-中。" class="header-anchor">#</a> Axios 是一个基于 promise 的 HTTP 库，可以用在浏览器和 node.js 中。</h3> <ol><li>从浏览器中创建 XMLHttpRequests</li> <li>从 node.js 创建 http 请求</li> <li>支持 Promise API</li> <li>拦截请求和响应</li> <li>转换请求数据和响应数据</li> <li>取消请求</li> <li>自动转换 JSON 数据</li> <li>客户端支持防御 XSRF</li> <li>浏览器支持</li></ol></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/myblog/vue/axios.html#axios在vue中的封装及使用" class="sidebar-link reco-side-axios在vue中的封装及使用" data-v-b57cc07c>axios在vue中的封装及使用</a></li><li class="level-2" data-v-b57cc07c><a href="/myblog/vue/axios.html#一、直接用封装好的vue-axios-我不推荐使用-感觉还是有点难用" class="sidebar-link reco-side-一、直接用封装好的vue-axios-我不推荐使用-感觉还是有点难用" data-v-b57cc07c>一、直接用封装好的vue-axios（我不推荐使用，感觉还是有点难用）</a></li><li class="level-2" data-v-b57cc07c><a href="/myblog/vue/axios.html#二、自己封装的axios" class="sidebar-link reco-side-二、自己封装的axios" data-v-b57cc07c>二、自己封装的axios</a></li><li class="level-2" data-v-b57cc07c><a href="/myblog/vue/axios.html#三、使用总结" class="sidebar-link reco-side-三、使用总结" data-v-b57cc07c>三、使用总结</a></li><li class="level-2" data-v-b57cc07c><a href="/myblog/vue/axios.html#四、axios优点-特性" class="sidebar-link reco-side-四、axios优点-特性" data-v-b57cc07c>四、axios优点（特性）</a></li><li class="level-3" data-v-b57cc07c><a href="/myblog/vue/axios.html#axios-是一个基于-promise-的-http-库-可以用在浏览器和-node-js-中。" class="sidebar-link reco-side-axios-是一个基于-promise-的-http-库-可以用在浏览器和-node-js-中。" data-v-b57cc07c>Axios 是一个基于 promise 的 HTTP 库，可以用在浏览器和 node.js 中。</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/myblog/assets/js/app.8b7d21f8.js" defer></script><script src="/myblog/assets/js/7.8d17ee5e.js" defer></script><script src="/myblog/assets/js/2.e73532cd.js" defer></script><script src="/myblog/assets/js/1.74d3146f.js" defer></script><script src="/myblog/assets/js/61.e92a1440.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>一.angularjs入门笔记 | 初见的博客</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/myblog/logo.png">
+    <meta name="description" content="一年之计在于春，一日之计在于晨">
+    
+    <link rel="preload" href="/myblog/assets/css/0.styles.08f35963.css" as="style"><link rel="preload" href="/myblog/assets/js/app.8b7d21f8.js" as="script"><link rel="preload" href="/myblog/assets/js/7.8d17ee5e.js" as="script"><link rel="preload" href="/myblog/assets/js/2.e73532cd.js" as="script"><link rel="preload" href="/myblog/assets/js/1.74d3146f.js" as="script"><link rel="preload" href="/myblog/assets/js/38.8fbe4938.js" as="script"><link rel="prefetch" href="/myblog/assets/js/10.313be986.js"><link rel="prefetch" href="/myblog/assets/js/11.5dd415fb.js"><link rel="prefetch" href="/myblog/assets/js/14.9dc64561.js"><link rel="prefetch" href="/myblog/assets/js/15.fcb98772.js"><link rel="prefetch" href="/myblog/assets/js/16.feb15059.js"><link rel="prefetch" href="/myblog/assets/js/17.a6a18900.js"><link rel="prefetch" href="/myblog/assets/js/18.6598ee33.js"><link rel="prefetch" href="/myblog/assets/js/19.7d21c2a4.js"><link rel="prefetch" href="/myblog/assets/js/20.9e7dadae.js"><link rel="prefetch" href="/myblog/assets/js/21.2c90b4cf.js"><link rel="prefetch" href="/myblog/assets/js/22.c3721e9d.js"><link rel="prefetch" href="/myblog/assets/js/23.aa2f047e.js"><link rel="prefetch" href="/myblog/assets/js/24.23ace95e.js"><link rel="prefetch" href="/myblog/assets/js/25.a155f2a3.js"><link rel="prefetch" href="/myblog/assets/js/26.025b4c51.js"><link rel="prefetch" href="/myblog/assets/js/27.29617493.js"><link rel="prefetch" href="/myblog/assets/js/28.0d31f6aa.js"><link rel="prefetch" href="/myblog/assets/js/29.877a6b5c.js"><link rel="prefetch" href="/myblog/assets/js/3.ce235bdf.js"><link rel="prefetch" href="/myblog/assets/js/30.6b4951fa.js"><link rel="prefetch" href="/myblog/assets/js/31.6e60cea1.js"><link rel="prefetch" href="/myblog/assets/js/32.a5c558d2.js"><link rel="prefetch" href="/myblog/assets/js/33.270d0047.js"><link rel="prefetch" href="/myblog/assets/js/34.ce57c764.js"><link rel="prefetch" href="/myblog/assets/js/35.5b94dcd3.js"><link rel="prefetch" href="/myblog/assets/js/36.21eb5999.js"><link rel="prefetch" href="/myblog/assets/js/37.57550c3a.js"><link rel="prefetch" href="/myblog/assets/js/39.a904786c.js"><link rel="prefetch" href="/myblog/assets/js/4.cc239dbc.js"><link rel="prefetch" href="/myblog/assets/js/40.9a4bbb37.js"><link rel="prefetch" href="/myblog/assets/js/41.8b7b9e82.js"><link rel="prefetch" href="/myblog/assets/js/42.d7f7c838.js"><link rel="prefetch" href="/myblog/assets/js/43.503b386e.js"><link rel="prefetch" href="/myblog/assets/js/44.b976a2e1.js"><link rel="prefetch" href="/myblog/assets/js/45.2614aa51.js"><link rel="prefetch" href="/myblog/assets/js/46.e969f014.js"><link rel="prefetch" href="/myblog/assets/js/47.92c1d80e.js"><link rel="prefetch" href="/myblog/assets/js/48.a666ae61.js"><link rel="prefetch" href="/myblog/assets/js/49.ae1e137c.js"><link rel="prefetch" href="/myblog/assets/js/5.d84a7528.js"><link rel="prefetch" href="/myblog/assets/js/50.a9161ce5.js"><link rel="prefetch" href="/myblog/assets/js/51.6f91684d.js"><link rel="prefetch" href="/myblog/assets/js/52.077a7eb2.js"><link rel="prefetch" href="/myblog/assets/js/53.81f276c5.js"><link rel="prefetch" href="/myblog/assets/js/54.e4bc783e.js"><link rel="prefetch" href="/myblog/assets/js/55.9723121c.js"><link rel="prefetch" href="/myblog/assets/js/56.4185c77b.js"><link rel="prefetch" href="/myblog/assets/js/57.7e341795.js"><link rel="prefetch" href="/myblog/assets/js/58.a4e4292c.js"><link rel="prefetch" href="/myblog/assets/js/59.e255e0e7.js"><link rel="prefetch" href="/myblog/assets/js/6.1ac8b290.js"><link rel="prefetch" href="/myblog/assets/js/60.b361890a.js"><link rel="prefetch" href="/myblog/assets/js/61.e92a1440.js"><link rel="prefetch" href="/myblog/assets/js/62.01da118a.js"><link rel="prefetch" href="/myblog/assets/js/63.5793ef49.js"><link rel="prefetch" href="/myblog/assets/js/64.9c219f2c.js"><link rel="prefetch" href="/myblog/assets/js/65.417486da.js"><link rel="prefetch" href="/myblog/assets/js/66.8e14241a.js"><link rel="prefetch" href="/myblog/assets/js/67.09e24e92.js"><link rel="prefetch" href="/myblog/assets/js/8.470738b1.js"><link rel="prefetch" href="/myblog/assets/js/9.6638e589.js"><link rel="prefetch" href="/myblog/assets/js/vendors~docsearch.6106b899.js">
+    <link rel="stylesheet" href="/myblog/assets/css/0.styles.08f35963.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>初见的博客</h3> <p class="description" data-v-59e6cb88>一年之计在于春，一日之计在于晨</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2023
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/myblog/" class="home-link router-link-active"><!----> <span class="site-name">初见的博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      JS
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/js/index.html" class="nav-link"><i class="undefined"></i>
+  call apply bind 的作用和区别
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/throttle.html" class="nav-link"><i class="undefined"></i>
+  节流和防抖
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/new.html" class="nav-link"><i class="undefined"></i>
+  new操作符
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/event.html" class="nav-link"><i class="undefined"></i>
+  事件循环
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/clap.html" class="nav-link"><i class="undefined"></i>
+  数组拍平
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/this.html" class="nav-link"><i class="undefined"></i>
+  this指向、闭包、作用域
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/sqkb.html" class="nav-link"><i class="undefined"></i>
+  深浅拷贝
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/mxdx.html" class="nav-link"><i class="undefined"></i>
+  ⾯向对象编程/原型链/继承
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/bubble-trapping.html" class="nav-link"><i class="undefined"></i>
+  冒泡和捕获
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/cache.html" class="nav-link"><i class="undefined"></i>
+  前端缓存
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/array.html" class="nav-link"><i class="undefined"></i>
+  数组常用方法
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/performance-opt.html" class="nav-link"><i class="undefined"></i>
+  前端性能优化
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/ts.html" class="nav-link"><i class="undefined"></i>
+  TS中的基本类型
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      ES6
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/es6module/index.html" class="nav-link"><i class="undefined"></i>
+  es6基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/ergodic.html" class="nav-link"><i class="undefined"></i>
+  for of 迭代器
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/arrow.html" class="nav-link"><i class="undefined"></i>
+  模板字符串
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/set.html" class="nav-link"><i class="undefined"></i>
+  实现一个 Set 数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/WeakMap.html" class="nav-link"><i class="undefined"></i>
+  WeakMap
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/promise.html" class="nav-link"><i class="undefined"></i>
+  聊聊promise
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      VUE
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/vue/difference.html" class="nav-link"><i class="undefined"></i>
+  vue2和vue3的区别
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/computed.html" class="nav-link"><i class="undefined"></i>
+  computed和watch的区别
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/vueJs.html" class="nav-link"><i class="undefined"></i>
+  vue2基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/axios.html" class="nav-link"><i class="undefined"></i>
+  axios封装
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/vue-router.html" class="nav-link"><i class="undefined"></i>
+  vue-router
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Node.js
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/Node.js/node-basic.html" class="nav-link"><i class="undefined"></i>
+  nodejs基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/Node.js/node-frame.html" class="nav-link"><i class="undefined"></i>
+  nodejs常用框架
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      webpack
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/webpack/webpack-basic.html" class="nav-link"><i class="undefined"></i>
+  webpack基础
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Angular.js
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/Angular.js/Angular.html" aria-current="page" class="nav-link router-link-exact-active router-link-active"><i class="undefined"></i>
+  Angular.js框架
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <!----> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>26</h3> <h6 data-v-1fad0c41>Articles</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>2</h3> <h6 data-v-1fad0c41>Tags</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      JS
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/js/index.html" class="nav-link"><i class="undefined"></i>
+  call apply bind 的作用和区别
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/throttle.html" class="nav-link"><i class="undefined"></i>
+  节流和防抖
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/new.html" class="nav-link"><i class="undefined"></i>
+  new操作符
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/event.html" class="nav-link"><i class="undefined"></i>
+  事件循环
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/clap.html" class="nav-link"><i class="undefined"></i>
+  数组拍平
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/this.html" class="nav-link"><i class="undefined"></i>
+  this指向、闭包、作用域
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/sqkb.html" class="nav-link"><i class="undefined"></i>
+  深浅拷贝
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/mxdx.html" class="nav-link"><i class="undefined"></i>
+  ⾯向对象编程/原型链/继承
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/bubble-trapping.html" class="nav-link"><i class="undefined"></i>
+  冒泡和捕获
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/cache.html" class="nav-link"><i class="undefined"></i>
+  前端缓存
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/array.html" class="nav-link"><i class="undefined"></i>
+  数组常用方法
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/performance-opt.html" class="nav-link"><i class="undefined"></i>
+  前端性能优化
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/ts.html" class="nav-link"><i class="undefined"></i>
+  TS中的基本类型
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      ES6
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/es6module/index.html" class="nav-link"><i class="undefined"></i>
+  es6基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/ergodic.html" class="nav-link"><i class="undefined"></i>
+  for of 迭代器
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/arrow.html" class="nav-link"><i class="undefined"></i>
+  模板字符串
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/set.html" class="nav-link"><i class="undefined"></i>
+  实现一个 Set 数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/WeakMap.html" class="nav-link"><i class="undefined"></i>
+  WeakMap
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/promise.html" class="nav-link"><i class="undefined"></i>
+  聊聊promise
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      VUE
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/vue/difference.html" class="nav-link"><i class="undefined"></i>
+  vue2和vue3的区别
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/computed.html" class="nav-link"><i class="undefined"></i>
+  computed和watch的区别
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/vueJs.html" class="nav-link"><i class="undefined"></i>
+  vue2基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/axios.html" class="nav-link"><i class="undefined"></i>
+  axios封装
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/vue-router.html" class="nav-link"><i class="undefined"></i>
+  vue-router
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Node.js
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/Node.js/node-basic.html" class="nav-link"><i class="undefined"></i>
+  nodejs基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/Node.js/node-frame.html" class="nav-link"><i class="undefined"></i>
+  nodejs常用框架
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      webpack
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/webpack/webpack-basic.html" class="nav-link"><i class="undefined"></i>
+  webpack基础
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Angular.js
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/Angular.js/Angular.html" aria-current="page" class="nav-link router-link-exact-active router-link-active"><i class="undefined"></i>
+  Angular.js框架
+</a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88></h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2023
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">一.angularjs入门笔记</h1> <div data-v-8a445198><!----> <!----> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h2 id="一-angularjs入门笔记"><a href="#一-angularjs入门笔记" class="header-anchor">#</a> 一.angularjs入门笔记</h2> <div class="language-html extra-class"><pre class="language-html"><code>1. AngularJS是什么?
+	* Google开源的 前端JS 结构化 框架
+	* 动态展示页面数据, 并与用户进行交互
+	* AngularJS特性(优点)
+		* 双向数据绑定
+		* 声明式依赖注入
+		* 解耦应用逻辑, 数据模型和视图
+		* 完善的页面指令
+		* 定制表单验证
+		* Ajax封装
+2. HelloWorld
+	* 导入angular.js, 并在页面中引入
+	* 在<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>中ng-app指令
+	* 定义ng-model='xxx'/{{xxx}}
+</code></pre></div><h2 id="二-四个重要概念"><a href="#二-四个重要概念" class="header-anchor">#</a> 二.四个重要概念</h2> <div class="language-html extra-class"><pre class="language-html"><code>1. **双向数据绑定**
+	* View（视图）： 页面（标签、指令，表达式）
+	* Model(模型) ：作用域对象（属性、方法）
+	* 数据绑定： 数据从一个位置自动流向另一个位置
+		* View--&gt;Model
+		* Model--&gt;View
+	* 单向数据绑定： 只支持一个方向
+		* View--&gt;Model  ： ng-init
+		* Model--&gt;View  : {{name}}
+	* 双向数据绑定
+		* Model<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>--</span><span class="token punctuation">&gt;</span></span>View  : ng-model
+	* angular是支持双向数据绑定的
+2. **依赖注入**
+	* 依赖的对象被别人(调用者)自动注入进入
+	* 注入的方式;
+		* 内部自建：不动态 
+		* 全局变量：污染全局环境
+		* 形参：这种最好
+	* angualr就是通过声明式依赖注入， 来得到作用域对象 
+	* 形参名不能随便定义（只是针对当前这种写法）
+3. ** MVC模式**
+  * **M: Model, 即模型**, 在angular中: 
+    * 为scope
+    * 储存数据的容器
+    * 提供操作数据的方法
+  * **V: View, 即视图**, 在angular中:
+    * 为页面
+    * 包括: html/css/directive/expression
+    * 显示Model的数据
+    * 将数据同步到Model
+    * 与用户交互
+  * **C: Controller, 即控制器**, 在angular中:
+    * 为angular的Controller
+    * 初始化Model数据
+    * 为Model添加行为方法
+4. **MVVM模式**
+  * M: Model, 即数据模型, 在angular中:
+    * 为scope中的各个数据对象
+  * V: View, 即视图, 在angular中:
+    * 为页面
+  * VM: ViewModel, 即视图模型, 在angular中:
+    * 为scope对象
+  * 在angular中controller不再是架构的核心，在MVVM中只是起辅助作用，用来辅助$scope对象，即VM层
+</code></pre></div><h2 id="三-四个重要对象"><a href="#三-四个重要对象" class="header-anchor">#</a> 三.四个重要对象</h2> <div class="language-html extra-class"><pre class="language-html"><code>1. **作用域**
+	* 是一个js实例对象
+	* 这个对象的属性、方法， 页面都可以直接引用、操作
+	* ng-app指令： 内部创建一个根作用域（$rootScope）, 是所有其它作用域的父对象
+2. **控制器**
+	* 也是一个对象，是我们View与Model之间的桥梁
+	* 当我们使用了ng-controller指令， 内部就会创建控制器对象
+	* 但我们同时得提供控制器的构造函数（必须定义一个$scope的形参）
+	* 每定义一个ng-controller指令， 内部就会创建一个新的作用域对象（$scope）, 并自动注入构造函数中,在函数内部可以直接使用$scope对象。
+3. **模块**
+	* 也是一个对象
+	* 创建模块对象： angular.module('模块名', [依赖的模块])
+	* 通过模块添加控制器：
+	    * module.controller('MyController', function($scope){//操作$scope的语句})
+	* angular的整体设计也是多模块的
+		* 核心模块： angular.js
+		* 扩展模块： angular-router.js, angular-message.js, angular-animate.js
+</code></pre></div><p>四.三个页面语法</p> <div class="language-html extra-class"><pre class="language-html"><code>1. **表达式**
+	* {{js表达式}}
+	* 从作用域对象中读取对应的属性数据来显示数据
+	* 不支持if/for/while
+	* 支持三目表达式
+2. **指令**
+	* 什么指令 ： 自定义标签属性/标签
+	* 常用的指令：
+		* ng-app: 指定模块名，angular管理的区域
+		* ng-model： 双向绑定，输入相关标签
+		* ng-init： 初始化数据
+		* ng-click： 调用作用域对象的方法（点击时）
+		  可以传$event
+		* ng-controller: 指定控制器构造函数名，内部会自动创建一个新的子作用域（外部的）
+		* ng-bind： 解决使用{{}}显示数据闪屏（在很短时间内显示{{}}）
+		* ng-repeat： 遍历数组显示数据， 数组有几个元素就会产生几个新的作用域
+			* $index, $first, $last, $middle, $odd, $even
+		* ng-show: 布尔类型， 如果为true才显示
+		* ng-hide: 布尔类型， 如果为true就隐藏
+		* ng-class: 动态引用定义的样式  {aClass:true, bClass:false}
+    * ng-style: 动态引用通过js指定的样式对象   {color:'red', background:'blue'}
+    * ng-mouseenter: 鼠标移入监听, 值为函数调用, 可以传$event
+    * ng-mouseleave: 鼠标移出监听, 值为函数调用, 可以传$event
+3. **过滤器**
+	* 作用: 在显示数据时可以对数据进行格式化或过滤
+		* 单个---&gt;格式化（将别的类型的数据转换为特定格式的字符串）
+		* 多个----》格式化/过滤
+		* 不会真正改变被操作数据
+	* {{express | 过滤器名：补充说明}}
+	* 常用过滤器：
+		* currency 货币格式化(文本)
+		* number数值格式化(文本)
+		* date 将日期对象格式化(文本)
+		* json: 将js对象格式化为json(文本)
+		* lowercase : 将字符串格式化为全小写(文本)
+		* uppercase : 将字符串格式化全大写(文本)
+
+		* limitTo 从一个数组或字符串中过滤出一个新的数组或字符串
+			* limitTo : 3  limitTo : -3
+		* orderBy : 根据指定作用域属性对数组进行排序
+			* {{[2,1,4,3] | orderBy}}  升序
+			* {{[2,1,4,3] | orderBy：‘-’}}  降序
+			* {{[{id:2,price:3}, {id:1, price:4}] | orderBy:'id'}  id升序
+			* {{[{id:2,price:3}, {id:1, price:4}] | orderBy:'-price'} price降序
+		* filter : 从数组中过滤返回一个新数组
+			* {{[{id:22,price:35}, {id:23, price:45}] | filter:{id:'3'}} //根据id过滤
+			* {{[{id:22,price:35}, {id:23, price:45}] | filter:{$:'3'}} //根据所有字段过滤
+</code></pre></div><h2 id="五-jquery实现"><a href="#五-jquery实现" class="header-anchor">#</a> 五.jQuery实现</h2> <div class="language-html extra-class"><pre class="language-html"><code><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>en<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>UTF-8<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>text<span class="token punctuation">&quot;</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>name<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>您输入的内容是：<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>contentSpan<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>text/javascript<span class="token punctuation">&quot;</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>../../js/jquery/jquery-1.11.1.js<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>text/javascript<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+  <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#name'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">keyup</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+          <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#contentSpan'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/myblog/Angular.js/Angular.html#一-angularjs入门笔记" class="sidebar-link reco-side-一-angularjs入门笔记" data-v-b57cc07c>一.angularjs入门笔记</a></li><li class="level-2" data-v-b57cc07c><a href="/myblog/Angular.js/Angular.html#二-四个重要概念" class="sidebar-link reco-side-二-四个重要概念" data-v-b57cc07c>二.四个重要概念</a></li><li class="level-2" data-v-b57cc07c><a href="/myblog/Angular.js/Angular.html#三-四个重要对象" class="sidebar-link reco-side-三-四个重要对象" data-v-b57cc07c>三.四个重要对象</a></li><li class="level-2" data-v-b57cc07c><a href="/myblog/Angular.js/Angular.html#五-jquery实现" class="sidebar-link reco-side-五-jquery实现" data-v-b57cc07c>五.jQuery实现</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/myblog/assets/js/app.8b7d21f8.js" defer></script><script src="/myblog/assets/js/7.8d17ee5e.js" defer></script><script src="/myblog/assets/js/2.e73532cd.js" defer></script><script src="/myblog/assets/js/1.74d3146f.js" defer></script><script src="/myblog/assets/js/38.8fbe4938.js" defer></script>
+  </body>
+</html>
