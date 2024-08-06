@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>减少 if else, 提升代码可读性 | 初见的博客</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/myblog/logo.png">
+    <meta name="description" content="有志者，事竟成，破釜沉舟，百二秦关终属楚。">
+    
+    <link rel="preload" href="/myblog/assets/css/0.styles.08f35963.css" as="style"><link rel="preload" href="/myblog/assets/js/app.7df1fa56.js" as="script"><link rel="preload" href="/myblog/assets/js/7.8d17ee5e.js" as="script"><link rel="preload" href="/myblog/assets/js/2.e73532cd.js" as="script"><link rel="preload" href="/myblog/assets/js/1.74d3146f.js" as="script"><link rel="preload" href="/myblog/assets/js/60.18be5f3c.js" as="script"><link rel="prefetch" href="/myblog/assets/js/10.313be986.js"><link rel="prefetch" href="/myblog/assets/js/100.cfd23618.js"><link rel="prefetch" href="/myblog/assets/js/101.d40e93f9.js"><link rel="prefetch" href="/myblog/assets/js/102.f84f0a4b.js"><link rel="prefetch" href="/myblog/assets/js/103.89919374.js"><link rel="prefetch" href="/myblog/assets/js/11.5dd415fb.js"><link rel="prefetch" href="/myblog/assets/js/14.9dc64561.js"><link rel="prefetch" href="/myblog/assets/js/15.fcb98772.js"><link rel="prefetch" href="/myblog/assets/js/16.feb15059.js"><link rel="prefetch" href="/myblog/assets/js/17.a6a18900.js"><link rel="prefetch" href="/myblog/assets/js/18.6598ee33.js"><link rel="prefetch" href="/myblog/assets/js/19.7d21c2a4.js"><link rel="prefetch" href="/myblog/assets/js/20.9e7dadae.js"><link rel="prefetch" href="/myblog/assets/js/21.2c90b4cf.js"><link rel="prefetch" href="/myblog/assets/js/22.c3721e9d.js"><link rel="prefetch" href="/myblog/assets/js/23.aa2f047e.js"><link rel="prefetch" href="/myblog/assets/js/24.23ace95e.js"><link rel="prefetch" href="/myblog/assets/js/25.a155f2a3.js"><link rel="prefetch" href="/myblog/assets/js/26.025b4c51.js"><link rel="prefetch" href="/myblog/assets/js/27.29617493.js"><link rel="prefetch" href="/myblog/assets/js/28.0d31f6aa.js"><link rel="prefetch" href="/myblog/assets/js/29.877a6b5c.js"><link rel="prefetch" href="/myblog/assets/js/3.ce235bdf.js"><link rel="prefetch" href="/myblog/assets/js/30.6b4951fa.js"><link rel="prefetch" href="/myblog/assets/js/31.6e60cea1.js"><link rel="prefetch" href="/myblog/assets/js/32.a5c558d2.js"><link rel="prefetch" href="/myblog/assets/js/33.270d0047.js"><link rel="prefetch" href="/myblog/assets/js/34.ce57c764.js"><link rel="prefetch" href="/myblog/assets/js/35.5b94dcd3.js"><link rel="prefetch" href="/myblog/assets/js/36.21eb5999.js"><link rel="prefetch" href="/myblog/assets/js/37.57550c3a.js"><link rel="prefetch" href="/myblog/assets/js/38.8fbe4938.js"><link rel="prefetch" href="/myblog/assets/js/39.933cb18a.js"><link rel="prefetch" href="/myblog/assets/js/4.cc239dbc.js"><link rel="prefetch" href="/myblog/assets/js/40.fa7fd974.js"><link rel="prefetch" href="/myblog/assets/js/41.4b6e6af3.js"><link rel="prefetch" href="/myblog/assets/js/42.c32999d2.js"><link rel="prefetch" href="/myblog/assets/js/43.3e62cb76.js"><link rel="prefetch" href="/myblog/assets/js/44.d20cc116.js"><link rel="prefetch" href="/myblog/assets/js/45.44c54ac7.js"><link rel="prefetch" href="/myblog/assets/js/46.2ef6b0d0.js"><link rel="prefetch" href="/myblog/assets/js/47.413418bf.js"><link rel="prefetch" href="/myblog/assets/js/48.1214953f.js"><link rel="prefetch" href="/myblog/assets/js/49.13b80c1c.js"><link rel="prefetch" href="/myblog/assets/js/5.d84a7528.js"><link rel="prefetch" href="/myblog/assets/js/50.c74f93df.js"><link rel="prefetch" href="/myblog/assets/js/51.27b2c6b8.js"><link rel="prefetch" href="/myblog/assets/js/52.8d8d4dd4.js"><link rel="prefetch" href="/myblog/assets/js/53.f405f759.js"><link rel="prefetch" href="/myblog/assets/js/54.4eba64e0.js"><link rel="prefetch" href="/myblog/assets/js/55.d9453076.js"><link rel="prefetch" href="/myblog/assets/js/56.6032c85c.js"><link rel="prefetch" href="/myblog/assets/js/57.5a19091f.js"><link rel="prefetch" href="/myblog/assets/js/58.cb6b907c.js"><link rel="prefetch" href="/myblog/assets/js/59.dd387396.js"><link rel="prefetch" href="/myblog/assets/js/6.1ac8b290.js"><link rel="prefetch" href="/myblog/assets/js/61.30924c92.js"><link rel="prefetch" href="/myblog/assets/js/62.946e1de0.js"><link rel="prefetch" href="/myblog/assets/js/63.8090542e.js"><link rel="prefetch" href="/myblog/assets/js/64.3abf10c6.js"><link rel="prefetch" href="/myblog/assets/js/65.9ab2a299.js"><link rel="prefetch" href="/myblog/assets/js/66.b6b43e65.js"><link rel="prefetch" href="/myblog/assets/js/67.f0cebfd8.js"><link rel="prefetch" href="/myblog/assets/js/68.cfc10be2.js"><link rel="prefetch" href="/myblog/assets/js/69.b2ae5cb8.js"><link rel="prefetch" href="/myblog/assets/js/70.10f6b861.js"><link rel="prefetch" href="/myblog/assets/js/71.1d40db97.js"><link rel="prefetch" href="/myblog/assets/js/72.4d422e40.js"><link rel="prefetch" href="/myblog/assets/js/73.795e5b14.js"><link rel="prefetch" href="/myblog/assets/js/74.77e7a227.js"><link rel="prefetch" href="/myblog/assets/js/75.aec35df8.js"><link rel="prefetch" href="/myblog/assets/js/76.c2ed3a3a.js"><link rel="prefetch" href="/myblog/assets/js/77.3752fc95.js"><link rel="prefetch" href="/myblog/assets/js/78.1b9345a3.js"><link rel="prefetch" href="/myblog/assets/js/79.7cdf905f.js"><link rel="prefetch" href="/myblog/assets/js/8.470738b1.js"><link rel="prefetch" href="/myblog/assets/js/80.911d83f8.js"><link rel="prefetch" href="/myblog/assets/js/81.f65235a0.js"><link rel="prefetch" href="/myblog/assets/js/82.8ba05369.js"><link rel="prefetch" href="/myblog/assets/js/83.2de4707b.js"><link rel="prefetch" href="/myblog/assets/js/84.013d167b.js"><link rel="prefetch" href="/myblog/assets/js/85.5f409548.js"><link rel="prefetch" href="/myblog/assets/js/86.8d46caab.js"><link rel="prefetch" href="/myblog/assets/js/87.d860b64a.js"><link rel="prefetch" href="/myblog/assets/js/88.01dc75d2.js"><link rel="prefetch" href="/myblog/assets/js/89.a2ddd592.js"><link rel="prefetch" href="/myblog/assets/js/9.6638e589.js"><link rel="prefetch" href="/myblog/assets/js/90.f933157d.js"><link rel="prefetch" href="/myblog/assets/js/91.b3b24db4.js"><link rel="prefetch" href="/myblog/assets/js/92.a88ff6e5.js"><link rel="prefetch" href="/myblog/assets/js/93.37e0a86e.js"><link rel="prefetch" href="/myblog/assets/js/94.d6052beb.js"><link rel="prefetch" href="/myblog/assets/js/95.4421fc55.js"><link rel="prefetch" href="/myblog/assets/js/96.3a65b405.js"><link rel="prefetch" href="/myblog/assets/js/97.ebc19828.js"><link rel="prefetch" href="/myblog/assets/js/98.9b7e4639.js"><link rel="prefetch" href="/myblog/assets/js/99.902c3c1d.js"><link rel="prefetch" href="/myblog/assets/js/vendors~docsearch.6106b899.js">
+    <link rel="stylesheet" href="/myblog/assets/css/0.styles.08f35963.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>初见的博客</h3> <p class="description" data-v-59e6cb88>有志者，事竟成，破釜沉舟，百二秦关终属楚。</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2024
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/myblog/" class="home-link router-link-active"><!----> <span class="site-name">初见的博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      JS
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/js/Promise.html" class="nav-link"><i class="undefined"></i>
+  Promise规范
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/browser-detailed.html" class="nav-link"><i class="undefined"></i>
+  浏览器对象详解
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/dom.html" class="nav-link"><i class="undefined"></i>
+  DOM操作
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/this.html" class="nav-link"><i class="undefined"></i>
+  this指向、闭包、作用域
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/throttle.html" class="nav-link"><i class="undefined"></i>
+  节流和防抖
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/new.html" class="nav-link"><i class="undefined"></i>
+  new操作符
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/event.html" class="nav-link"><i class="undefined"></i>
+  事件循环
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/index.html" class="nav-link"><i class="undefined"></i>
+  call apply bind 的作用和区别
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/sqkb.html" class="nav-link"><i class="undefined"></i>
+  深浅拷贝
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/mxdx.html" class="nav-link"><i class="undefined"></i>
+  ⾯向对象编程/原型链/继承
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/bubble-trapping.html" class="nav-link"><i class="undefined"></i>
+  冒泡和捕获
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/cache.html" class="nav-link"><i class="undefined"></i>
+  前端缓存
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/performance-opt.html" class="nav-link"><i class="undefined"></i>
+  前端性能优化
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/array.html" class="nav-link"><i class="undefined"></i>
+  数组常用方法
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/clap.html" class="nav-link"><i class="undefined"></i>
+  数组拍平
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/HTTP.html" class="nav-link"><i class="undefined"></i>
+  前端网络
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/front-security.html" class="nav-link"><i class="undefined"></i>
+  前端安全
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/garbage-collect.html" class="nav-link"><i class="undefined"></i>
+  垃圾回收机制
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/if-else-tips.html" aria-current="page" class="nav-link router-link-exact-active router-link-active"><i class="undefined"></i>
+  减少 if-else 的小技巧
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      工程化
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/webpackstudy/module.html" class="nav-link"><i class="undefined"></i>
+  前端模块化
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/webpackstudy/webpack-basic.html" class="nav-link"><i class="undefined"></i>
+  webpack基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/webpackstudy/webpack.html" class="nav-link"><i class="undefined"></i>
+  webpack构建
+</a></li><li class="dropdown-item"><!----> <a href="https://zhuanlan.zhihu.com/p/408195292" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  webpack 中的module
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://zhuanlan.zhihu.com/p/448738741" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  webpack性能优化
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/myblog/webpackstudy/principle.html" class="nav-link"><i class="undefined"></i>
+  webpack原理相关
+</a></li><li class="dropdown-item"><!----> <a href="https://zhuanlan.zhihu.com/p/408733746" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  一步步实现webpack打包
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/myblog/webpackstudy/ts-basics.html" class="nav-link"><i class="undefined"></i>
+  ts基础及使用
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      VUE
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/vue/vueJs.html" class="nav-link"><i class="undefined"></i>
+  vue2基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/difference.html" class="nav-link"><i class="undefined"></i>
+  vue2和vue3的区别
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/computed.html" class="nav-link"><i class="undefined"></i>
+  computed和watch的区别
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/axios.html" class="nav-link"><i class="undefined"></i>
+  axios封装
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/vue-router.html" class="nav-link"><i class="undefined"></i>
+  vue-router
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/basicknowledge.html" class="nav-link"><i class="undefined"></i>
+  Vue2.0基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/misnotes.html" class="nav-link"><i class="undefined"></i>
+  Vue2.0进阶
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/ssr.html" class="nav-link"><i class="undefined"></i>
+  Vue ssr
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/vue3.html" class="nav-link"><i class="undefined"></i>
+  Vue3.0
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/vue-router.html" class="nav-link"><i class="undefined"></i>
+  vue-router
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/vuex.html" class="nav-link"><i class="undefined"></i>
+  vuex性能问题
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/compare.html" class="nav-link"><i class="undefined"></i>
+  Vue2.x VS Vue3.x
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      ES6
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/es6module/es6-esnext.html" class="nav-link"><i class="undefined"></i>
+  ES6及ESNext规范
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/index.html" class="nav-link"><i class="undefined"></i>
+  es6基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/ergodic.html" class="nav-link"><i class="undefined"></i>
+  for of 迭代器
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/arrow.html" class="nav-link"><i class="undefined"></i>
+  模板字符串
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/set.html" class="nav-link"><i class="undefined"></i>
+  实现一个 Set 数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/WeakMap.html" class="nav-link"><i class="undefined"></i>
+  WeakMap
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/promise.html" class="nav-link"><i class="undefined"></i>
+  聊聊promise
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Angular.js
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/Angular.js/Angular.html" class="nav-link"><i class="undefined"></i>
+  Angular.js框架
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      TS
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/ts/index.html" class="nav-link"><i class="undefined"></i>
+  TS基础理论
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/ts/combatExercise.html" class="nav-link"><i class="undefined"></i>
+  TS实战
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/ts/basic.html" class="nav-link"><i class="undefined"></i>
+  TS中的基本类型
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/ts/tsJs.html" class="nav-link"><i class="undefined"></i>
+  ts和js的区别
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Node.js
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/Node.js/node-basic.html" class="nav-link"><i class="undefined"></i>
+  nodejs基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/Node.js/node-frame.html" class="nav-link"><i class="undefined"></i>
+  nodejs常用框架
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      webpack
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/webpack/webpack-basic.html" class="nav-link"><i class="undefined"></i>
+  webpack基础
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      其他
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/other/browser-principle.html" class="nav-link"><i class="undefined"></i>
+  浏览器原理与pwa
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/other/redraw-reflow.html" class="nav-link"><i class="undefined"></i>
+  重绘回流
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/other/compatibility.html" class="nav-link"><i class="undefined"></i>
+  前端兼容性问题
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/other/virtual-list.html" class="nav-link"><i class="undefined"></i>
+  虚拟列表
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/other/data-collection.html" class="nav-link"><i class="undefined"></i>
+  数据采集
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/other/websocket.html" class="nav-link"><i class="undefined"></i>
+  websocket
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/other/vue-react.html" class="nav-link"><i class="undefined"></i>
+  vue vs react
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/other/ESLint.html" class="nav-link"><i class="undefined"></i>
+  ESLint规范
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/other/ES6.html" class="nav-link"><i class="undefined"></i>
+  ES6 实用语法
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/other/excellentarticles.html" class="nav-link"><i class="undefined"></i>
+  优秀文章
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/other/personal-summary.html" class="nav-link"><i class="undefined"></i>
+  个人总结
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/other/uniapp.html" class="nav-link"><i class="undefined"></i>
+  uni-app
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <!----> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>60</h3> <h6 data-v-1fad0c41>Articles</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>9</h3> <h6 data-v-1fad0c41>Tags</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      JS
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/js/Promise.html" class="nav-link"><i class="undefined"></i>
+  Promise规范
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/browser-detailed.html" class="nav-link"><i class="undefined"></i>
+  浏览器对象详解
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/dom.html" class="nav-link"><i class="undefined"></i>
+  DOM操作
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/this.html" class="nav-link"><i class="undefined"></i>
+  this指向、闭包、作用域
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/throttle.html" class="nav-link"><i class="undefined"></i>
+  节流和防抖
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/new.html" class="nav-link"><i class="undefined"></i>
+  new操作符
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/event.html" class="nav-link"><i class="undefined"></i>
+  事件循环
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/index.html" class="nav-link"><i class="undefined"></i>
+  call apply bind 的作用和区别
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/sqkb.html" class="nav-link"><i class="undefined"></i>
+  深浅拷贝
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/mxdx.html" class="nav-link"><i class="undefined"></i>
+  ⾯向对象编程/原型链/继承
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/bubble-trapping.html" class="nav-link"><i class="undefined"></i>
+  冒泡和捕获
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/cache.html" class="nav-link"><i class="undefined"></i>
+  前端缓存
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/performance-opt.html" class="nav-link"><i class="undefined"></i>
+  前端性能优化
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/array.html" class="nav-link"><i class="undefined"></i>
+  数组常用方法
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/clap.html" class="nav-link"><i class="undefined"></i>
+  数组拍平
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/HTTP.html" class="nav-link"><i class="undefined"></i>
+  前端网络
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/front-security.html" class="nav-link"><i class="undefined"></i>
+  前端安全
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/garbage-collect.html" class="nav-link"><i class="undefined"></i>
+  垃圾回收机制
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/js/if-else-tips.html" aria-current="page" class="nav-link router-link-exact-active router-link-active"><i class="undefined"></i>
+  减少 if-else 的小技巧
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      工程化
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/webpackstudy/module.html" class="nav-link"><i class="undefined"></i>
+  前端模块化
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/webpackstudy/webpack-basic.html" class="nav-link"><i class="undefined"></i>
+  webpack基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/webpackstudy/webpack.html" class="nav-link"><i class="undefined"></i>
+  webpack构建
+</a></li><li class="dropdown-item"><!----> <a href="https://zhuanlan.zhihu.com/p/408195292" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  webpack 中的module
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://zhuanlan.zhihu.com/p/448738741" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  webpack性能优化
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/myblog/webpackstudy/principle.html" class="nav-link"><i class="undefined"></i>
+  webpack原理相关
+</a></li><li class="dropdown-item"><!----> <a href="https://zhuanlan.zhihu.com/p/408733746" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  一步步实现webpack打包
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/myblog/webpackstudy/ts-basics.html" class="nav-link"><i class="undefined"></i>
+  ts基础及使用
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      VUE
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/vue/vueJs.html" class="nav-link"><i class="undefined"></i>
+  vue2基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/difference.html" class="nav-link"><i class="undefined"></i>
+  vue2和vue3的区别
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/computed.html" class="nav-link"><i class="undefined"></i>
+  computed和watch的区别
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/axios.html" class="nav-link"><i class="undefined"></i>
+  axios封装
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/vue-router.html" class="nav-link"><i class="undefined"></i>
+  vue-router
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/basicknowledge.html" class="nav-link"><i class="undefined"></i>
+  Vue2.0基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/misnotes.html" class="nav-link"><i class="undefined"></i>
+  Vue2.0进阶
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/ssr.html" class="nav-link"><i class="undefined"></i>
+  Vue ssr
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/vue3.html" class="nav-link"><i class="undefined"></i>
+  Vue3.0
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/vue-router.html" class="nav-link"><i class="undefined"></i>
+  vue-router
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/vuex.html" class="nav-link"><i class="undefined"></i>
+  vuex性能问题
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/vue/compare.html" class="nav-link"><i class="undefined"></i>
+  Vue2.x VS Vue3.x
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      ES6
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/es6module/es6-esnext.html" class="nav-link"><i class="undefined"></i>
+  ES6及ESNext规范
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/index.html" class="nav-link"><i class="undefined"></i>
+  es6基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/ergodic.html" class="nav-link"><i class="undefined"></i>
+  for of 迭代器
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/arrow.html" class="nav-link"><i class="undefined"></i>
+  模板字符串
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/set.html" class="nav-link"><i class="undefined"></i>
+  实现一个 Set 数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/WeakMap.html" class="nav-link"><i class="undefined"></i>
+  WeakMap
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/es6module/promise.html" class="nav-link"><i class="undefined"></i>
+  聊聊promise
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Angular.js
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/Angular.js/Angular.html" class="nav-link"><i class="undefined"></i>
+  Angular.js框架
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      TS
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/ts/index.html" class="nav-link"><i class="undefined"></i>
+  TS基础理论
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/ts/combatExercise.html" class="nav-link"><i class="undefined"></i>
+  TS实战
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/ts/basic.html" class="nav-link"><i class="undefined"></i>
+  TS中的基本类型
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/ts/tsJs.html" class="nav-link"><i class="undefined"></i>
+  ts和js的区别
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Node.js
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/Node.js/node-basic.html" class="nav-link"><i class="undefined"></i>
+  nodejs基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/Node.js/node-frame.html" class="nav-link"><i class="undefined"></i>
+  nodejs常用框架
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      webpack
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/webpack/webpack-basic.html" class="nav-link"><i class="undefined"></i>
+  webpack基础
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      其他
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/other/browser-principle.html" class="nav-link"><i class="undefined"></i>
+  浏览器原理与pwa
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/other/redraw-reflow.html" class="nav-link"><i class="undefined"></i>
+  重绘回流
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/other/compatibility.html" class="nav-link"><i class="undefined"></i>
+  前端兼容性问题
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/other/virtual-list.html" class="nav-link"><i class="undefined"></i>
+  虚拟列表
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/other/data-collection.html" class="nav-link"><i class="undefined"></i>
+  数据采集
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/other/websocket.html" class="nav-link"><i class="undefined"></i>
+  websocket
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/other/vue-react.html" class="nav-link"><i class="undefined"></i>
+  vue vs react
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/other/ESLint.html" class="nav-link"><i class="undefined"></i>
+  ESLint规范
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/other/ES6.html" class="nav-link"><i class="undefined"></i>
+  ES6 实用语法
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/other/excellentarticles.html" class="nav-link"><i class="undefined"></i>
+  优秀文章
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/other/personal-summary.html" class="nav-link"><i class="undefined"></i>
+  个人总结
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/other/uniapp.html" class="nav-link"><i class="undefined"></i>
+  uni-app
+</a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88></h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2024
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">减少 if else, 提升代码可读性</h1> <div data-v-8a445198><!----> <!----> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h2 id="减少-if-else-提升代码可读性"><a href="#减少-if-else-提升代码可读性" class="header-anchor">#</a> 减少 if else, 提升代码可读性</h2> <p>多重嵌套的 if else 在维护的时候真的让人很恼火😡，有时候一个 bug 排查下来，严重感觉身体被掏空😿。</p> <h3 id="_1-短路运算"><a href="#_1-短路运算" class="header-anchor">#</a> 1. 短路运算</h3> <p>Javascript 的逻辑或 <code>||</code>的短路运算有时候可以用来代替一些比较简单的<code>if else</code></p> <ul><li>简单案例展示</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">let</span> c
+
+<span class="token keyword">if</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  c <span class="token operator">=</span> a
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  c <span class="token operator">=</span> b
+<span class="token punctuation">}</span>
+</code></pre></div><p>可以简写为：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">let</span> c <span class="token operator">=</span> a <span class="token operator">||</span> b
+</code></pre></div><h3 id="_2-三元运算符"><a href="#_2-三元运算符" class="header-anchor">#</a> 2. 三元运算符</h3> <ul><li>尽量不要嵌套多层， 否则也不利于代码维护</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> fn <span class="token operator">=</span> <span class="token punctuation">(</span>nBoolean<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>nBoolean<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token number">1</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token number">0</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 使用三元运算符</span>
+<span class="token keyword">const</span> fn <span class="token operator">=</span> <span class="token punctuation">(</span>nBoolean<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> nBoolean <span class="token operator">?</span> <span class="token number">1</span> <span class="token operator">:</span> <span class="token number">0</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ul><li>三元运算符使用的地方也比较多，比如：条件赋值，递归...</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// num值在nBoolean为true时为10，否则为5</span>
+<span class="token keyword">let</span> num <span class="token operator">=</span> nBoolean <span class="token operator">?</span> <span class="token number">10</span> <span class="token operator">:</span> <span class="token number">5</span>
+
+<span class="token comment">// 求0-n之间的整数的和</span>
+<span class="token keyword">let</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token parameter">n</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  sum <span class="token operator">+=</span> n
+  <span class="token keyword">return</span> n <span class="token operator">&gt;=</span> <span class="token number">2</span> <span class="token operator">?</span> <span class="token function">add</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">:</span> sum<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> num <span class="token operator">=</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 55</span>
+</code></pre></div><h3 id="_3-switch-case"><a href="#_3-switch-case" class="header-anchor">#</a> 3. switch case</h3> <ul><li>对于 <code>switch case</code>，虽然它的可读性确实比 <code>else if</code>更高，但是我想大家应该都觉得它写起来比较麻烦吧😣（反正我觉得很麻烦😺）。</li></ul> <p>例：有A、B、C、D四种种类型，在A、B的时候输出1，C输出2、D输出3，默认输出0。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">let</span> type <span class="token operator">=</span> <span class="token string">'A'</span>
+
+<span class="token comment">//if else if</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>type <span class="token operator">===</span> <span class="token string">'A'</span> <span class="token operator">||</span> type <span class="token operator">===</span> <span class="token string">'B'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>type <span class="token operator">===</span> <span class="token string">'C'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>type <span class="token operator">===</span> <span class="token string">'D'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// switch case</span>
+<span class="token keyword">switch</span> <span class="token punctuation">(</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">case</span> <span class="token string">'A'</span><span class="token operator">:</span>
+  <span class="token keyword">case</span> <span class="token string">'B'</span><span class="token operator">:</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">break</span>
+  <span class="token keyword">case</span> <span class="token string">'C'</span><span class="token operator">:</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token keyword">break</span>
+  <span class="token keyword">case</span> <span class="token string">'D'</span><span class="token operator">:</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token keyword">default</span><span class="token operator">:</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="_4-对象配置-策略模式"><a href="#_4-对象配置-策略模式" class="header-anchor">#</a> 4. 对象配置/策略模式</h3> <ul><li>策略模式就是将一系列算法封装起来，并使它们相互之间可以替换。被封装起来的算法具有独立性，外部不可改变其特性。</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">let</span> type <span class="token operator">=</span> <span class="token string">'A'</span>
+
+<span class="token keyword">let</span> tactics <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token string-property property">'A'</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token string-property property">'B'</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token string-property property">'C'</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+  <span class="token string-property property">'D'</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+  <span class="token keyword">default</span><span class="token operator">:</span> <span class="token number">0</span>
+<span class="token punctuation">}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>tactics<span class="token punctuation">[</span>type<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// 1</span>
+</code></pre></div><h3 id="_5-举例"><a href="#_5-举例" class="header-anchor">#</a> 5. 举例</h3> <blockquote><p>案例1 商场促销价</p></blockquote> <p>根据不同的用户使用不同的折扣，如：普通用户不打折，普通会员用户9折，年费会员8.5折，超级会员8折。</p> <ul><li>使用if else实现😢</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 获取折扣 --- 使用if else</span>
+<span class="token keyword">const</span> <span class="token function-variable function">getDiscount</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">userKey</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>userKey <span class="token operator">===</span> <span class="token string">'普通会员'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token number">0.9</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>userKey <span class="token operator">===</span> <span class="token string">'年费会员'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token number">0.85</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>userKey <span class="token operator">===</span> <span class="token string">'超级会员'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token number">0.8</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token number">1</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">getDiscount</span><span class="token punctuation">(</span><span class="token string">'普通会员'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 0.9</span>
+</code></pre></div><ul><li>使用对象配置/策略模式实现🙂</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 获取折扣 -- 使用对象配置/策略模式</span>
+<span class="token keyword">const</span> <span class="token function-variable function">getDiscount</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">userKey</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 我们可以根据用户类型来生成我们的折扣对象</span>
+  <span class="token keyword">let</span> discounts <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">'普通会员'</span><span class="token operator">:</span> <span class="token number">0.9</span><span class="token punctuation">,</span>
+    <span class="token string-property property">'年费会员'</span><span class="token operator">:</span> <span class="token number">0.85</span><span class="token punctuation">,</span>
+    <span class="token string-property property">'超级会员'</span><span class="token operator">:</span> <span class="token number">0.8</span><span class="token punctuation">,</span>
+    <span class="token string-property property">'default'</span><span class="token operator">:</span> <span class="token number">1</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> discounts<span class="token punctuation">[</span>userKey<span class="token punctuation">]</span> <span class="token operator">||</span> discounts<span class="token punctuation">[</span><span class="token string">'default'</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">getDiscount</span><span class="token punctuation">(</span><span class="token string">'普通会员'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 0.9</span>
+</code></pre></div><ul><li>对象配置不一定非要使用对象去管理我们键值对，还可以使用 Map去管理</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 获取折扣 -- 使用对象配置/策略模式</span>
+<span class="token keyword">const</span> <span class="token function-variable function">getDiscount</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">userKey</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 我们可以根据用户类型来生成我们的折扣对象</span>
+  <span class="token keyword">let</span> discounts <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token punctuation">[</span><span class="token string">'普通会员'</span><span class="token punctuation">,</span> <span class="token number">0.9</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">'年费会员'</span><span class="token punctuation">,</span> <span class="token number">0.85</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">'超级会员'</span><span class="token punctuation">,</span> <span class="token number">0.8</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">'default'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span>
+  <span class="token punctuation">]</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> discounts<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>userKey<span class="token punctuation">)</span> <span class="token operator">||</span> discounts<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'default'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">getDiscount</span><span class="token punctuation">(</span><span class="token string">'普通会员'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 0.9</span>
+</code></pre></div><blockquote><p>案例2  年终奖</p></blockquote> <p>公司的年终奖根据员工的工资基数和绩效等级来发放的。例如，绩效为A的人年终奖有4倍工资，绩效为B的有3倍，绩效为C的只有2倍。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">calculateBonus</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">performanceLevel<span class="token punctuation">,</span> salary</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>performanceLevel <span class="token operator">===</span> <span class="token string">'A'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> salary <span class="token operator">*</span> <span class="token number">4</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>performanceLevel <span class="token operator">===</span> <span class="token string">'B'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> salary <span class="token operator">*</span> <span class="token number">3</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>performanceLevel <span class="token operator">===</span> <span class="token string">'C'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> salary <span class="token operator">*</span> <span class="token number">2</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token function">calculateBonus</span><span class="token punctuation">(</span> <span class="token string">'B'</span><span class="token punctuation">,</span> <span class="token number">20000</span> <span class="token punctuation">)</span> <span class="token comment">// 输出：60000</span>
+</code></pre></div><p>写法2</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">let</span> strategies <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+  <span class="token punctuation">[</span><span class="token string">'A'</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">[</span><span class="token string">'B'</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">[</span><span class="token string">'C'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> <span class="token function-variable function">calculateBonus</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">performanceLevel<span class="token punctuation">,</span> salary</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+  <span class="token keyword">return</span> strategies<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>performanceLevel<span class="token punctuation">)</span> <span class="token operator">*</span> salary
+<span class="token punctuation">}</span>
+<span class="token function">calculateBonus</span><span class="token punctuation">(</span> <span class="token string">'B'</span><span class="token punctuation">,</span> <span class="token number">20000</span> <span class="token punctuation">)</span> <span class="token comment">// 输出：60000</span>
+</code></pre></div><p>需求变动，若要加上一个部门区分，假设公司有两个部门D和F，D部门的业绩较好，所以年终奖翻1.2倍😄，F部门的业绩较差，年终奖打9折😭。</p> <p>改造以上代码，把状态值拼接，然后存入Map中</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 以绩效_部门的方式拼接键值存入</span>
+<span class="token keyword">let</span> strategies <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token punctuation">[</span><span class="token string">'A_D'</span><span class="token punctuation">,</span> <span class="token number">4</span> <span class="token operator">*</span> <span class="token number">1.2</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">'B_D'</span><span class="token punctuation">,</span> <span class="token number">3</span> <span class="token operator">*</span> <span class="token number">1.2</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">'C_D'</span><span class="token punctuation">,</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token number">1.2</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">'A_F'</span><span class="token punctuation">,</span> <span class="token number">4</span> <span class="token operator">*</span> <span class="token number">0.9</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">'B_F'</span><span class="token punctuation">,</span> <span class="token number">3</span> <span class="token operator">*</span> <span class="token number">0.9</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">'C_F'</span><span class="token punctuation">,</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token number">0.9</span><span class="token punctuation">]</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> <span class="token function-variable function">calculateBonus</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">performanceLevel<span class="token punctuation">,</span> salary<span class="token punctuation">,</span> department</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+  <span class="token keyword">return</span> strategies<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>performanceLevel<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">_</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>department<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span> <span class="token operator">*</span> salary
+<span class="token punctuation">}</span>
+<span class="token function">calculateBonus</span><span class="token punctuation">(</span> <span class="token string">'B'</span><span class="token punctuation">,</span> <span class="token number">20000</span><span class="token punctuation">,</span> <span class="token string">'D'</span> <span class="token punctuation">)</span> <span class="token comment">// 输出：72000</span>
+</code></pre></div></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/myblog/js/if-else-tips.html#减少-if-else-提升代码可读性" class="sidebar-link reco-side-减少-if-else-提升代码可读性" data-v-b57cc07c>减少 if else, 提升代码可读性</a></li><li class="level-3" data-v-b57cc07c><a href="/myblog/js/if-else-tips.html#_1-短路运算" class="sidebar-link reco-side-_1-短路运算" data-v-b57cc07c>1. 短路运算</a></li><li class="level-3" data-v-b57cc07c><a href="/myblog/js/if-else-tips.html#_2-三元运算符" class="sidebar-link reco-side-_2-三元运算符" data-v-b57cc07c>2. 三元运算符</a></li><li class="level-3" data-v-b57cc07c><a href="/myblog/js/if-else-tips.html#_3-switch-case" class="sidebar-link reco-side-_3-switch-case" data-v-b57cc07c>3. switch case</a></li><li class="level-3" data-v-b57cc07c><a href="/myblog/js/if-else-tips.html#_4-对象配置-策略模式" class="sidebar-link reco-side-_4-对象配置-策略模式" data-v-b57cc07c>4. 对象配置/策略模式</a></li><li class="level-3" data-v-b57cc07c><a href="/myblog/js/if-else-tips.html#_5-举例" class="sidebar-link reco-side-_5-举例" data-v-b57cc07c>5. 举例</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/myblog/assets/js/app.7df1fa56.js" defer></script><script src="/myblog/assets/js/7.8d17ee5e.js" defer></script><script src="/myblog/assets/js/2.e73532cd.js" defer></script><script src="/myblog/assets/js/1.74d3146f.js" defer></script><script src="/myblog/assets/js/60.18be5f3c.js" defer></script>
+  </body>
+</html>
